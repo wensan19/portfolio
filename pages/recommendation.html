@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter of Recommendation | Airport Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="section-page-body">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
+
+    <main class="section-page-main">
+        <article class="section-page-card showcase-page showcase-page--recommendation fade-up show">
+            <div class="showcase-page-header">
+                <div class="showcase-header-copy">
+                    <p class="zone-kicker">Special Document - Recommendation</p>
+                    <h1>Letter of Recommendation</h1>
+                    <p>
+                        This page presents my recommendation letter in the same portfolio showcase format, with space
+                        to highlight the context, strengths recognised, and the document itself.
+                    </p>
+                </div>
+
+                <div class="showcase-view-toggle">
+                    <button class="showcase-toggle-button" id="view-all-button" type="button">View All</button>
+                    <button class="showcase-toggle-button is-hidden" id="view-carousel-button" type="button">
+                        Back to Slideshow
+                    </button>
+                </div>
+            </div>
+
+            <section class="showcase-carousel-shell" id="showcase-carousel-shell"
+                aria-label="Recommendation slideshow">
+                <div class="showcase-carousel-card">
+                    <div class="showcase-image-panel">
+                        <div class="showcase-image-frame">
+                            <img class="recommendation-preview-image" id="showcase-main-image" src="../assets/images/letters/letter.jpeg"
+                                alt="Letter of recommendation preview">
+                        </div>
+
+                        <div class="recommendation-action-row">
+                            <a class="about-document-button" href="../assets/letters/WenSan-UniRecommendationLetter.pdf"
+                                target="_blank" rel="noopener noreferrer">
+                                Open Recommendation Letter
+                            </a>
+                        </div>
+
+                        <div class="showcase-carousel-controls">
+                            <div class="showcase-nav-buttons">
+                                <button class="showcase-nav-button" id="previous-showcase-button" type="button">
+                                    ← Previous
+                                </button>
+                                <button class="showcase-nav-button" id="next-showcase-button" type="button">
+                                    Next →
+                                </button>
+                            </div>
+
+                            <p class="showcase-slide-counter" id="showcase-slide-counter">1 / 1</p>
+                        </div>
+                    </div>
+
+                    <div class="showcase-text-panel">
+                        <p class="showcase-label" id="showcase-label">Recommendation</p>
+                        <h2 class="showcase-title" id="showcase-title">Letter of Recommendation</h2>
+                        <p class="showcase-meta" id="showcase-meta">Academic &amp; Personal Endorsement</p>
+                        <p class="showcase-description" id="showcase-description">
+                            This letter reflects the strengths, attitude, and personal qualities that others have
+                            recognised in my academic and personal journey.
+                        </p>
+                        <ul class="showcase-highlights" id="showcase-highlights"></ul>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="showcase-gallery-shell is-hidden" id="showcase-gallery-shell"
+                aria-label="All recommendation entries">
+                <h2>All Recommendation Entries</h2>
+                <div class="showcase-gallery-grid" id="showcase-gallery-grid"></div>
+            </section>
+
+            <div class="section-page-actions">
+                <a class="plane-button" href="../index.html">More to Check In!</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
+    </footer>
+
+    <section class="showcase-zoom-overlay is-hidden" id="showcase-zoom-overlay" aria-hidden="true">
+        <button class="showcase-zoom-close" id="showcase-zoom-close" type="button" aria-label="Close expanded image">
+            &times;
+        </button>
+        <div class="showcase-zoom-backdrop" id="showcase-zoom-backdrop"></div>
+        <div class="showcase-zoom-panel">
+            <img id="showcase-zoom-image" src="" alt="Expanded letter of recommendation preview">
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <script src="./showcase-page.js"></script>
+    <script src="./recommendation.js"></script>
+</body>
+
+</html>

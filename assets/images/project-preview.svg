@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="title desc">
+  <title id="title">Project preview</title>
+  <desc id="desc">A soft airport-themed project preview illustration.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#dff2ff"/>
+      <stop offset="55%" stop-color="#f7f8ff"/>
+      <stop offset="100%" stop-color="#ffd9ec"/>
+    </linearGradient>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#e6dcff" stop-opacity="0.82"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="600" rx="48" fill="url(#sky)"/>
+  <circle cx="150" cy="110" r="76" fill="#ffffff" opacity="0.58"/>
+  <circle cx="730" cy="120" r="92" fill="#ffffff" opacity="0.5"/>
+  <circle cx="800" cy="465" r="118" fill="#ffffff" opacity="0.4"/>
+  <rect x="180" y="155" width="540" height="320" rx="36" fill="url(#card)" stroke="#a8d8ff" stroke-opacity="0.55" stroke-width="4"/>
+  <rect x="230" y="220" width="250" height="26" rx="13" fill="#7fc5ff" opacity="0.78"/>
+  <rect x="230" y="280" width="390" height="18" rx="9" fill="#8d8bc3" opacity="0.42"/>
+  <rect x="230" y="325" width="340" height="18" rx="9" fill="#8d8bc3" opacity="0.35"/>
+  <rect x="230" y="385" width="156" height="48" rx="24" fill="#ffd9ec"/>
+  <path d="M610 205c28 0 51 23 51 51v134c0 19-15 34-34 34h-34c-19 0-34-15-34-34V256c0-28 23-51 51-51Z" fill="#a8d8ff" opacity="0.86"/>
+  <path d="M588 278h44l-22-38-22 38Z" fill="#ffffff" opacity="0.86"/>
+  <path d="M610 286v82" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
+  <path d="M155 500c135-92 449-90 590 0" fill="none" stroke="#ffffff" stroke-width="22" stroke-linecap="round" opacity="0.7"/>
+</svg>

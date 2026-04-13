@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Portfolio | Wen San</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
+
+    <main class="page-layout">
+        <section class="mode-panel" aria-label="Portfolio display mode">
+            <div class="mode-switch" role="group" aria-label="Portfolio display mode">
+                <a class="mode-button" href="index.html">Interactive Check-In</a>
+                <a class="mode-button active" href="simple.html">Simple Portfolio</a>
+            </div>
+        </section>
+
+        <section class="mode-view simple-portfolio" id="simple-mode" aria-labelledby="simple-home-heading">
+            <header class="simple-portfolio-nav fade-up">
+                <a class="simple-brand" href="#simple-home-heading">Goh Wen San</a>
+                <nav aria-label="Simple portfolio navigation">
+                    <a href="#simple-about">About</a>
+                    <a href="#simple-projects">Projects</a>
+                    <a href="#simple-work">Work</a>
+                    <a href="#simple-certificates">Certificates</a>
+                    <a href="#simple-enrichment">Enrichment</a>
+                    <a href="#simple-leadership">Leadership</a>
+                    <a href="#simple-interests">Interests</a>
+                </nav>
+            </header>
+
+            <section class="simple-portfolio-hero fade-up" aria-labelledby="simple-home-heading">
+                <div class="simple-hero-copy">
+                    <p class="simple-kicker">Diploma in Applied AI &amp; Data Analytics</p>
+                    <h1 id="simple-home-heading">Hello, I'm <span>Wen San</span></h1>
+                    <p>
+                        I create thoughtful digital work across AI, data analytics, web design, leadership, and
+                        community-focused experiences.
+                    </p>
+                    <div class="simple-hero-actions" aria-label="Featured portfolio links">
+                        <a class="btn" href="./resume.html">
+                            View Resume
+                        </a>
+                        <a class="btn secondary" href="https://github.com/wensan19" target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                        <a class="btn secondary" href="https://www.linkedin.com/in/wen-san-goh-477641361/"
+                            target="_blank" rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                        <a class="btn secondary" href="mailto:wensan.25@ichat.sp.edu.sg">Email</a>
+                        <a class="btn secondary" href="./pages/recommendation.html">Letter of Recommendation</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-about" aria-labelledby="simple-about-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">About Me</p>
+                    <h2 id="simple-about-heading">A Look Into My Life</h2>
+                    <a href="./pages/about.html">Full about page</a>
+                </div>
+
+                <div class="simple-view-all-grid simple-view-all-grid--about">
+                    <article class="simple-view-card simple-view-card--wide">
+                        <a class="simple-image-link" href="./pages/about.html">
+                            <img src="./assets/images/pizza@italy.jpeg" alt="Italy travel memory">
+                        </a>
+                        <div>
+                            <p class="simple-list-label">Profile</p>
+                            <h3>Applied AI &amp; Data Analytics Student</h3>
+                            <p>
+                                I am a student from Singapore Polytechnic studying Applied AI &amp; Data Analytics. I
+                                enjoy creating meaningful digital experiences and exploring how technology, creativity,
+                                and service can work together.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="simple-view-card">
+                        <p class="simple-list-label">Focus Areas</p>
+                        <h3>AI, Data, Web &amp; Community</h3>
+                        <p>
+                            My work connects technical curiosity with practical presentation, teamwork, and inclusive
+                            experiences.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-projects" aria-labelledby="simple-projects-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">Selected Work</p>
+                    <h2 id="simple-projects-heading">Projects</h2>
+                    <a href="./pages/projects.html">Explore all projects</a>
+                </div>
+
+                <div class="simple-view-all-grid">
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/projects.html?slide=0">
+                            <img src="./assets/images/project/BEDwebsite.jpeg" alt="Pawfect Wellness website preview">
+                        </a>
+                        <p class="simple-list-label">Project 1 - BED CA2</p>
+                        <h3>Pawfect Wellness</h3>
+                        <p>
+                            Full-stack web application with authentication, database-backed content, and interactive
+                            pages for a wellness-focused user experience.
+                        </p>
+                        <a href="https://pawfect-wellness-bed.onrender.com" target="_blank" rel="noopener noreferrer">
+                            Live Site
+                        </a>
+                    </article>
+
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/projects.html?slide=1">
+                            <img src="./assets/projects/pdas/pdas.jpeg" alt="Job views factor analysis document preview">
+                        </a>
+                        <p class="simple-list-label">Project 2 - PDAS CA1</p>
+                        <h3>Job Views Factor Analysis</h3>
+                        <p>
+                            Data analysis project exploring salary, job title, work type, and geographical location as
+                            factors affecting job posting views.
+                        </p>
+                        <a href="./pages/projects.html">View Notebook</a>
+                    </article>
+
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/projects.html?slide=2">
+                            <img src="./assets/projects/aiml/aiml.jpeg"
+                                alt="Customer segmentation and forecasting notebook preview">
+                        </a>
+                        <p class="simple-list-label">Project 3 - AI/ML CA2</p>
+                        <h3>Customer Segmentation &amp; Energy Consumption Forecasting</h3>
+                        <p>
+                            AI/ML notebook project covering customer segmentation, Statsmodels forecasting, evaluation,
+                            charts, and 60-month forecasts.
+                        </p>
+                        <a href="./pages/projects.html">View Project</a>
+                    </article>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-work" aria-labelledby="simple-work-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">Work Experience</p>
+                    <h2 id="simple-work-heading">Internship Experience</h2>
+                    <a href="./pages/experience.html">View work page</a>
+                </div>
+
+                <div class="simple-view-all-grid">
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/experience.html?slide=1">
+                            <img src="./assets/images/work/website.jpeg" alt="Website work from internship">
+                        </a>
+                        <p class="simple-list-label">4-Month Internship</p>
+                        <h3>WordPress Website Support</h3>
+                        <p>
+                            Helped create a WordPress website and supported digital content work during my internship
+                            with CKA Consultants / CKA Design Pte Ltd.
+                        </p>
+                    </article>
+
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/experience.html?slide=1">
+                            <img src="./assets/images/work/model1.jpeg" alt="3D modelling internship work">
+                        </a>
+                        <p class="simple-list-label">Visual Work</p>
+                        <h3>3D Modelling &amp; Draft Support</h3>
+                        <p>
+                            Supported 3D modelling, visual preparation, architectural competition draft writing, and
+                            meeting observations.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-certificates"
+                aria-labelledby="simple-certificates-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">Certificates</p>
+                    <h2 id="simple-certificates-heading">Credentials</h2>
+                    <a href="./pages/certificates.html">View certificates page</a>
+                </div>
+
+                <div class="simple-view-all-grid">
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/certificates.html?slide=0">
+                            <img src="./assets/images/certificates/CPR_cert.jpeg" alt="CPR and AED certificate">
+                        </a>
+                        <h3>CPR + AED Certification</h3>
+                        <p>
+                            Built readiness to respond calmly and responsibly in emergency situations.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/certificates.html?slide=1">
+                            <img src="./assets/images/certificates/datacamp1.jpeg" alt="DataCamp certificate">
+                        </a>
+                        <h3>DataCamp Learning</h3>
+                        <p>
+                            Continued developing data and analytics skills through online learning.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/leadership.html?slide=3">
+                            <img src="./assets/images/leadership/swiftnano.jpeg" alt="Swift UI Nano Bootcamp">
+                        </a>
+                        <h3>Swift UI Nano Bootcamp</h3>
+                        <p>
+                            Worked on inclusive app ideas and strengthened product design thinking.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-enrichment"
+                aria-labelledby="simple-enrichment-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">growth</p>
+                    <h2 id="simple-enrichment-heading">Community &amp; Enrichment</h2>
+                    <a href="./pages/community.html">View enrichment page</a>
+                </div>
+
+                <div class="simple-view-all-grid">
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/community.html?category=enrichment&amp;slide=0">
+                            <img src="./assets/images/enrichment/hangzhou.jpeg" alt="Hangzhou overseas learning trip">
+                        </a>
+                        <h3>Hangzhou Overseas Learning Trip</h3>
+                        <p>
+                            Learned about real-world AI applications and engaged with industry professionals.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/community.html?category=enrichment&amp;slide=1">
+                            <img src="./assets/images/enrichment/terrarium.jpeg" alt="Terrarium workshop">
+                        </a>
+                        <h3>Terrarium &amp; Painting Workshop</h3>
+                        <p>
+                            Took part in creative service learning activities with the Deaf community.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/community.html?category=community&amp;slide=0">
+                            <img src="./assets/images/community/plushMaking.jpeg" alt="Sock toy sewing activity">
+                        </a>
+                        <h3>Sock Toy Sewing Activity</h3>
+                        <p>
+                            Guided participants in sewing a stuffed toy from a sock.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-leadership"
+                aria-labelledby="simple-leadership-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">Leadership</p>
+                    <h2 id="simple-leadership-heading">Leadership &amp; Initiative</h2>
+                    <a href="./pages/leadership.html">View leadership page</a>
+                </div>
+
+                <div class="simple-view-all-grid">
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/leadership.html?slide=1">
+                            <img src="./assets/images/leadership/leapCamp.jpeg" alt="Leadership camp memory">
+                        </a>
+                        <h3>LEAP Camp</h3>
+                        <p>
+                            Developed confidence, initiative, and teamwork through challenge-based activities.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/leadership.html?slide=2">
+                            <img src="./assets/images/leadership/sem1class.jpeg" alt="Class representative memory">
+                        </a>
+                        <h3>Class Representative</h3>
+                        <p>
+                            Helped teachers and students communicate smoothly and shared updates clearly.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/leadership.html?slide=3">
+                            <img src="./assets/images/leadership/swiftnano.jpeg" alt="Swift UI Nano Bootcamp team">
+                        </a>
+                        <h3>Group Leader</h3>
+                        <p>
+                            Led a team during Swift UI Nano Bootcamp to design an inclusive app idea.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="simple-section fade-up" id="simple-interests" aria-labelledby="simple-interests-heading">
+                <div class="simple-section-heading">
+                    <p class="simple-kicker">Interests</p>
+                    <h2 id="simple-interests-heading">What keeps me curious</h2>
+                    <a href="./pages/interests.html">View interests page</a>
+                </div>
+
+                <div class="simple-view-all-grid">
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/interests.html?slide=0">
+                            <img src="./assets/images/interests/volleyball.jpeg" alt="Volleyball interest">
+                        </a>
+                        <h3>Volleyball</h3>
+                        <p>
+                            Volleyball reminds me how important trust, discipline, and communication are in a team.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/interests.html?slide=4">
+                            <img src="./assets/images/interests/vlog.jpeg" alt="Vlogging interest">
+                        </a>
+                        <h3>Vlogging</h3>
+                        <p>
+                            I enjoy documenting moments and turning everyday experiences into small stories.
+                        </p>
+                    </article>
+                    <article class="simple-view-card">
+                        <a class="simple-image-link" href="./pages/interests.html?slide=2">
+                            <img src="./assets/images/interests/golf.jpeg" alt="Golf interest">
+                        </a>
+                        <h3>Golf &amp; Outdoor Activities</h3>
+                        <p>
+                            I like activities that help me slow down, focus, and learn through practice.
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

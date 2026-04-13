@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Experience | Airport Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="section-page-body">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
+
+    <main class="section-page-main">
+        <article class="section-page-card experience-page fade-up show">
+            <div class="showcase-page-header">
+                <div class="showcase-header-copy">
+                    <p class="zone-kicker">Destination 04 - Work Experience</p>
+                    <h1>Work Experience</h1>
+                    <p>
+                        This page highlights the practical experiences that helped me grow more confident, observant,
+                        and prepared for real working environments.
+                    </p>
+                </div>
+
+                <div class="showcase-view-toggle">
+                    <button class="showcase-toggle-button" id="view-all-button" type="button">View All</button>
+                    <button class="showcase-toggle-button is-hidden" id="view-carousel-button" type="button">
+                        Back to Slideshow
+                    </button>
+                </div>
+            </div>
+
+            <section class="experience-carousel-shell" id="experience-carousel-shell"
+                aria-label="Work experience slideshow">
+                <div class="experience-carousel-card">
+                    <div class="experience-media-panel">
+                        <div class="experience-media-frame" id="experience-media-frame">
+                            <img id="experience-main-image" src="../assets/images/experience-cka-placeholder.jpg"
+                                alt="Work experience preview">
+                        </div>
+
+                        <div class="experience-website-preview is-hidden" id="experience-website-preview"></div>
+
+                        <div class="experience-media-controls">
+                            <div class="showcase-nav-buttons">
+                                <button class="showcase-nav-button" id="previous-media-button" type="button">
+                                    ← Previous Media
+                                </button>
+                                <button class="showcase-nav-button" id="next-media-button" type="button">
+                                    Next Media →
+                                </button>
+                            </div>
+
+                            <p class="showcase-slide-counter" id="experience-media-counter">1 / 1 media</p>
+                        </div>
+
+                        <div class="experience-entry-controls">
+                            <div class="showcase-nav-buttons">
+                                <button class="showcase-nav-button" id="previous-experience-button" type="button">
+                                    ← Previous Experience
+                                </button>
+                                <button class="showcase-nav-button" id="next-experience-button" type="button">
+                                    Next Experience →
+                                </button>
+                            </div>
+
+                            <p class="showcase-slide-counter" id="experience-slide-counter">1 / 3</p>
+                        </div>
+                    </div>
+
+                    <div class="showcase-text-panel">
+                        <p class="showcase-label" id="experience-label">Experience</p>
+                        <h2 class="showcase-title" id="experience-title">CKA Consultants / CKA Design Pte Ltd</h2>
+                        <p class="experience-role" id="experience-role">Internship Role</p>
+                        <p class="showcase-meta" id="experience-duration">4-Month Internship</p>
+                        <p class="showcase-description" id="experience-description">
+                            My internship gave me the opportunity to observe how design, communication, and professional
+                            collaboration come together in a real workplace setting.
+                        </p>
+
+                        <ul class="showcase-highlights" id="experience-highlights"></ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="showcase-gallery-shell is-hidden" id="showcase-gallery-shell"
+                aria-label="All work experience entries">
+                <h2>All Work Experience Entries</h2>
+                <div class="showcase-gallery-grid" id="showcase-gallery-grid"></div>
+            </section>
+
+            <div class="section-page-actions">
+                <a class="plane-button" href="../index.html">More to Check In!</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
+    </footer>
+
+    <section class="experience-zoom-overlay is-hidden" id="experience-zoom-overlay" aria-hidden="true">
+        <button class="experience-zoom-close" id="experience-zoom-close" type="button" aria-label="Close zoomed image">
+            ×
+        </button>
+        <div class="experience-zoom-backdrop" id="experience-zoom-backdrop"></div>
+        <div class="experience-zoom-panel">
+            <img id="experience-zoom-image" src="" alt="Zoomed work experience visual">
+        </div>
+    </section>
+
+    <script src="../script.js"></script>
+    <script src="./experience.js"></script>
+</body>
+
+</html>

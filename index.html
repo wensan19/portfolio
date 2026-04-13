@@ -1,154 +1,185 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wen San | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wen San | Portfolio Prototype</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
 
 <body>
-    <header class="navbar">
-        <div class="logo">Wen San</div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#interests">Interests</a>
-            <a href="#certificates">Certificates</a>
-            <a href="#experience">Experience</a>
-            <a href="#leadership">Leadership</a>
-            <a href="#community">Community</a>
-            <a href="#github">GitHub</a>
-        </nav>
-    </header>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
 
-    <section class="hero fade-up">
-        <div class="hero-text">
-            <h1>Hello, I’m <span>Wen San</span></h1>
-            <p>
-                Applied AI & Data Analytics student from Singapore Polytechnic with interests in AI,
-                data analytics, design, leadership, and community impact.
-            </p>
-            <div class="hero-buttons">
-                <a class="btn" href="#github">My GitHub</a>
-                <a class="btn secondary" href="#experience">My Portfolio</a>
+    <main class="page-layout">
+        <section class="mode-panel" aria-label="Portfolio display mode">
+            <div class="mode-switch" role="group" aria-label="Portfolio display mode">
+                <button class="mode-button active" id="interactive-mode-button" type="button" data-mode="interactive">
+                    Interactive Check-In
+                </button>
+                <a class="mode-button" id="simple-mode-button" href="simple.html">
+                    Simple Portfolio
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="about" class="section fade-up">
-        <h2>About Me</h2>
-        <p>
-            I enjoy combining technology, creativity, and communication to build meaningful projects.
-            I am especially interested in AI, data analytics, web design, and interactive digital experiences.
-        </p>
-    </section>
+        <section class="mode-view" id="interactive-mode" aria-labelledby="interactive-heading">
+            <section class="brand-panel fade-up">
+                <p class="eyebrow">Made by Goh Wen San</p>
+                <h1 id="interactive-heading">Airport Check-In Portfolio</h1>
+                <p class="intro-text">
+                    A interactive travel themed portfolio where each section is checked in like airport luggage
+                    before takeoff.
+                </p>
+            </section>
 
-    <section id="interests" class="section fade-up">
-        <h2>My Interests</h2>
-        <div class="card-grid">
-            <div class="card hover-pop">
-                <h3>Artificial Intelligence</h3>
-                <p>Exploring how AI can solve real-world problems and support meaningful innovation.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Data Analytics</h3>
-                <p>Finding patterns in data and turning them into useful insights and decisions.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Web Design</h3>
-                <p>Creating soft, interactive, and visually appealing websites and interfaces.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Community Impact</h3>
-                <p>Taking part in initiatives that support inclusion, care, and meaningful engagement.</p>
-            </div>
-        </div>
-    </section>
+            <aside class="prototype-flow-banner fade-up">
+                <div class="prototype-flow-copy">
+                    <p class="zone-kicker">How This Works</p>
+                    <h3>drag each object into the Security Scan, and unlock the page.
+                        Progress stays saved, so the experience still feels like a guided check-in journey.</h3>
+                    <p>
+                        Check in all luggages to unlock the final boarding pass!
+                    </p>
+                    <p>
+                        It is recommended to view this prototype on desktop for the best experience, if not simple portfolio mobile-friendly. 
+                    </p>
+                    <div class="simple-hero-actions" aria-label="Featured portfolio links">
+                        <a class="btn" href="./resume.html">
+                            View Resume
+                        </a>
+                        <a class="btn secondary" href="https://github.com/wensan19" target="_blank"
+                            rel="noopener noreferrer">
+                            GitHub
+                        </a>
+                        <a class="btn secondary" href="https://www.linkedin.com/in/wen-san-goh-477641361/"
+                            target="_blank" rel="noopener noreferrer">
+                            LinkedIn
+                        </a>
+                        <a class="btn secondary" href="mailto:wensan.25@ichat.sp.edu.sg">Email</a>
+                        <a class="btn secondary" href="./pages/recommendation.html">Letter of Recommendation</a>
+                    </div>
+                </div>
+            </aside>
 
-    <section id="certificates" class="section fade-up">
-        <h2>Certificates</h2>
-        <div class="card-grid">
-            <div class="card hover-pop">
-                <h3>CPR + AED Certification</h3>
-                <p>Emergency preparedness and basic lifesaving skills training.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Basic Peer Support Skills Training</h3>
-                <p>Developed listening, empathy, and peer support communication skills.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Swift UI Nano Bootcamp</h3>
-                <p>Worked in a team to design and present an inclusive app concept.</p>
-            </div>
-        </div>
-    </section>
+            <div class="interactive-top-grid">
+                <section class="luggage-zone fade-up" aria-labelledby="luggage-heading">
+                    <div class="zone-header">
+                        <div>
+                            <p class="zone-kicker">Waiting Area</p>
+                            <h3 id="luggage-heading">Portfolio Items Ready for Check-In</h3>
+                        </div>
+                        <p>Drag an item into the scanner to continue your journey.</p>
+                        <p>You can also turn the 3D model for a full 360° view!</p>
+                    </div>
 
-    <section id="experience" class="section fade-up">
-        <h2>Work Experience</h2>
-        <div class="card">
-            <h3>CKA Consultants / CKA Design Pte Ltd</h3>
-            <p><strong>Internship Experience</strong></p>
-            <p>
-                Helped create a WordPress website, supported 3D modelling and design-related work,
-                contributed to architectural draft writing, and observed professional meetings,
-                including discussion related to One Shenton Condominium.
-            </p>
-        </div>
-    </section>
+                    <div class="luggage-lane" aria-hidden="true"></div>
 
-    <section id="leadership" class="section fade-up">
-        <h2>Leadership</h2>
-        <div class="card-grid">
-            <div class="card hover-pop">
-                <h3>Group Leader</h3>
-                <p>Led a team during the Swift UI Nano Bootcamp to develop an inclusive app idea.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Class Representative</h3>
-                <p>Helped improve communication between lecturers and classmates.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>LEAP Camp</h3>
-                <p>Built confidence, initiative, and teamwork through challenge-based activities.</p>
-            </div>
-        </div>
-    </section>
+                    <div class="item-grid" id="item-container"></div>
+                    <p class="empty-state is-hidden" id="empty-state">
+                        All items have been checked in. Your final boarding pass is ready.
+                    </p>
+                </section>
 
-    <section id="community" class="section fade-up">
-        <h2>Community Service & Enrichment</h2>
-        <div class="card-grid">
-            <div class="card hover-pop">
-                <h3>Community Service with Deaf Community @ SP</h3>
-                <p>Took part in service activities involving engagement and inclusion.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Terrarium & Painting Workshop</h3>
-                <p>Participated in service-learning activities with the Deaf community.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Sock Toy Sewing Activity</h3>
-                <p>Guided participants in sewing a stuffed toy from a sock.</p>
-            </div>
-            <div class="card hover-pop">
-                <h3>Hangzhou Overseas Learning Trip</h3>
-                <p>Learned about real-world AI applications and gained industry exposure.</p>
-            </div>
-        </div>
-    </section>
+                <div class="scanner-column">
+                    <section class="scanner-shell fade-up" aria-labelledby="scanner-heading">
+                        <div class="scanner-top">
+                            <p class="zone-kicker">Security Scan</p>
+                            <h3 id="scanner-heading">X-Ray Scanner</h3>
+                        </div>
 
-    <section id="github" class="section fade-up">
-        <h2>GitHub</h2>
-        <div class="card github-box">
-            <p>Visit my GitHub profile to view my repositories and coding projects.</p>
-            <a class="btn" href="https://github.com/wensan19" target="_blank">Go to My GitHub</a>
-        </div>
-    </section>
+                        <div class="scanner-machine">
+                            <div class="scanner-window" id="scanner-drop-zone" aria-label="Drop portfolio item here">
+                                <div class="scanner-screen">
+                                    <span class="scanner-label">Scanner Screen</span>
+                                    <strong>Drop item here</strong>
+                                    <p id="scanner-status">Ready for the next check-in.</p>
+                                </div>
+                            </div>
+                            <div class="scanner-belt" aria-hidden="true"></div>
+                        </div>
+                    </section>
 
-    <footer>
-        <p>© 2026 Wen San • Portfolio Website</p>
+                    <section class="project-slot fade-up" id="project-slot"></section>
+                </div>
+            </div>
+
+            <div class="interactive-bottom-grid">
+                <article class="hero-card fade-up">
+                        <button class="secondary-button" id="reset-progress-button" type="button">
+                            Reset Check-In
+                        </button>
+                    </div>
+                </article>
+
+                <aside class="status-card fade-up" aria-live="polite">
+                    <p class="terminal-label">Boarding Progress</p>
+                    <h3 id="progress-count">0 / 7 items checked in</h3>
+                    <p class="status-copy">
+                        Checked items disappear from the waiting area and stay completed after refresh.
+                    </p>
+                    <div class="completion-list" id="completion-list"></div>
+                </aside>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
     </footer>
+
+    <section class="overlay celebration-overlay is-hidden" id="celebration-overlay" aria-hidden="true">
+        <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+        <div class="overlay-backdrop" id="celebration-backdrop"></div>
+        <div class="overlay-panel celebration-panel">
+            <button class="overlay-close" id="celebration-close-button" type="button"
+                aria-label="Close celebration overlay">
+                &times;
+            </button>
+            <p class="overlay-label">Final Destination Unlocked</p>
+            <h2>Congraduations</h2>
+            <p class="celebration-copy">
+                All seven items have cleared the airport scanner. Your portfolio boarding pass is now ready for takeoff.
+            </p>
+
+            <article class="boarding-pass">
+                <div class="boarding-stub">
+                    <p>Flight</p>
+                    <strong>PORT 019</strong>
+                    <p>Gate</p>
+                    <strong>A1</strong>
+                </div>
+
+                <div class="boarding-main">
+                    <p class="ticket-kicker">Boarding Pass</p>
+                    <h3>Portfolio Contact Links</h3>
+                    <p>
+                        Click the links below to view my GitHub, LinkedIn, Email, and Resume. Thank you for taking the time to check in and explore my portfolio!
+                    </p>
+
+                    <div class="ticket-links">
+                        <a href="https://github.com/wensan19" class="ticket-link" target="_blank"
+                            rel="noopener noreferrer">GitHub</a>
+                        <a href="https://www.linkedin.com/in/wen-san-goh-477641361/" class="ticket-link"
+                            target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="mailto:wensan.25@ichat.sp.edu.sg" class="ticket-link">Email</a>
+                        <a href="./resume.html" class="ticket-link">Resume</a>
+                    </div>
+                </div>
+            </article>
+
+            <button class="secondary-button celebration-button" id="celebration-home-button" type="button">
+                Return to Homepage
+            </button>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
