@@ -19,8 +19,8 @@ const experienceData = [
         alt: "Multimedia and admin internship at CKA Design",
       },
       {
-        type: "video",
-        src: "../assets/video/shenton vid creative final.mp4",
+        type: "youtube",
+        src: "https://www.youtube.com/embed/OsfIkdVPlN0",
         alt: "One Shenton Video",
       },
     ],
@@ -138,6 +138,18 @@ function getInitialExperienceIndex() {
 }
 
 function createMediaElement(mediaItem) {
+  if (mediaItem.type === "youtube") {
+    const iframe = document.createElement("iframe");
+    iframe.className = "experience-video-embed";
+    iframe.src = mediaItem.src;
+    iframe.title = mediaItem.alt;
+    iframe.allow =
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.allowFullscreen = true;
+    iframe.loading = "lazy";
+    return iframe;
+  }
+
   if (mediaItem.type === "video") {
     const video = document.createElement("video");
     video.src = mediaItem.src;
@@ -242,7 +254,18 @@ function renderGallery() {
 
     let mediaMarkup = "";
 
-    if (firstMedia.type === "video") {
+    if (firstMedia.type === "youtube") {
+      mediaMarkup = `
+        <iframe
+          class="experience-video-embed"
+          src="${firstMedia.src}"
+          title="${firstMedia.alt}"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      `;
+    } else if (firstMedia.type === "video") {
       mediaMarkup = `
         <video controls preload="metadata" playsinline aria-label="${firstMedia.alt}">
           <source src="${firstMedia.src}">

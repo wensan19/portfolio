@@ -3213,13 +3213,20 @@ pre.notebook-cell-source,
 
 .experience-media-frame img,
 .experience-media-frame video,
-.experience-gallery-card video {
+.experience-media-frame iframe,
+.experience-gallery-card video,
+.experience-gallery-card iframe {
     width: 100%;
     max-height: 240px;
     display: block;
     object-fit: contain;
     border-radius: 1.2rem;
     background: rgba(229, 236, 252, 0.72);
+}
+
+.experience-video-embed {
+    aspect-ratio: 16 / 9;
+    border: 0;
 }
 
 .experience-media-controls,
@@ -3468,7 +3475,9 @@ body.dark-theme .experience-media-frame {
 
 body.dark-theme .experience-media-frame img,
 body.dark-theme .experience-media-frame video,
-body.dark-theme .experience-gallery-card video {
+body.dark-theme .experience-media-frame iframe,
+body.dark-theme .experience-gallery-card video,
+body.dark-theme .experience-gallery-card iframe {
     background: rgba(31, 27, 43, 0.92);
 }
 
