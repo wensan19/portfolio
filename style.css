@@ -107,19 +107,20 @@ body.dark-theme .background-cloud {
     z-index: 30;
     display: inline-flex;
     align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
+    gap: 8px;
+    min-height: 40px;
+    padding: 9px 12px;
     border: 1px solid rgba(126, 176, 222, 0.28);
     border-radius: 999px;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.58);
     color: var(--text-main);
-    box-shadow: 0 12px 28px rgba(121, 154, 199, 0.24);
+    box-shadow: 0 10px 22px rgba(121, 154, 199, 0.16);
     backdrop-filter: blur(10px);
 }
 
 .theme-toggle-sun,
 .theme-toggle-moon {
-    font-size: 1.35rem;
+    font-size: 0.92rem;
     line-height: 1;
 }
 
@@ -129,9 +130,9 @@ body.dark-theme .background-cloud {
 }
 
 body.dark-theme .theme-toggle {
-    background: rgba(20, 30, 48, 0.96);
+    background: rgba(20, 30, 48, 0.58);
     border-color: rgba(130, 162, 214, 0.28);
-    box-shadow: 0 14px 28px rgba(5, 10, 20, 0.4);
+    box-shadow: 0 12px 24px rgba(5, 10, 20, 0.32);
 }
 
 .page-layout {
@@ -2124,13 +2125,14 @@ body.dark-theme .overlay-backdrop {
     .theme-toggle {
         top: 12px;
         right: 12px;
-        padding: 12px 16px;
-        gap: 12px;
+        min-height: 38px;
+        padding: 8px 11px;
+        gap: 8px;
     }
 
     .theme-toggle-sun,
     .theme-toggle-moon {
-        font-size: 1.2rem;
+        font-size: 0.88rem;
     }
 
     .simple-menu {
