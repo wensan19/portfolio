@@ -2038,6 +2038,153 @@ body.dark-theme .overlay-backdrop {
     }
 }
 
+@media (max-width: 640px) {
+    #interactive-mode {
+        width: 100%;
+    }
+
+    #interactive-mode .brand-panel,
+    #interactive-mode .prototype-flow-banner,
+    #interactive-mode .interactive-top-grid,
+    #interactive-mode .interactive-bottom-grid {
+        width: 100%;
+    }
+
+    #interactive-mode .brand-panel,
+    #interactive-mode .prototype-flow-banner,
+    #interactive-mode .luggage-zone,
+    #interactive-mode .hero-card,
+    #interactive-mode .status-card {
+        padding: 16px;
+    }
+
+    #interactive-mode .brand-panel {
+        margin-bottom: 16px;
+    }
+
+    #interactive-mode .prototype-flow-banner,
+    #interactive-mode .interactive-top-grid {
+        margin-bottom: 18px;
+    }
+
+    #interactive-mode .interactive-top-grid,
+    #interactive-mode .interactive-bottom-grid,
+    #interactive-mode .scanner-column {
+        gap: 18px;
+    }
+
+    #interactive-mode .zone-header {
+        gap: 10px;
+    }
+
+    #interactive-mode .zone-header p,
+    #interactive-mode .prototype-flow-banner p,
+    #interactive-mode .status-copy {
+        font-size: 0.95rem;
+        line-height: 1.55;
+    }
+
+    #interactive-mode .luggage-lane {
+        height: 12px;
+        margin: 14px 0 16px;
+    }
+
+    #interactive-mode .item-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    #interactive-mode .model-object-item {
+        gap: 8px;
+        touch-action: manipulation;
+    }
+
+    #interactive-mode .model-object-wrap {
+        height: clamp(132px, 36vw, 170px);
+        min-height: 0;
+    }
+
+    #interactive-mode .project-slot .model-object-wrap {
+        height: clamp(150px, 42vw, 190px);
+    }
+
+    #interactive-mode .model-object-title {
+        font-size: 0.92rem;
+        line-height: 1.25;
+    }
+
+    #interactive-mode .scanner-machine {
+        margin-top: 14px;
+        padding: 14px;
+        border-radius: 22px;
+    }
+
+    #interactive-mode .scanner-window {
+        min-height: 190px;
+        padding: 12px;
+        border-width: 3px;
+        border-radius: 20px;
+    }
+
+    #interactive-mode .scanner-screen {
+        max-width: 230px;
+        padding: 18px;
+        border-radius: 16px;
+    }
+
+    #interactive-mode .scanner-screen strong {
+        font-size: 1.08rem;
+    }
+
+    #interactive-mode .scanner-screen p {
+        font-size: 0.92rem;
+        line-height: 1.45;
+    }
+
+    #interactive-mode .scanner-belt {
+        height: 16px;
+        margin-top: 12px;
+    }
+
+    #interactive-mode .completion-list {
+        gap: 8px;
+        margin-top: 14px;
+    }
+
+    #interactive-mode .completion-pill {
+        padding: 10px 12px;
+        gap: 8px;
+        font-size: 0.92rem;
+    }
+}
+
+@media (max-width: 420px) {
+    #interactive-mode .item-grid {
+        gap: 10px;
+    }
+
+    #interactive-mode .model-object-wrap {
+        height: clamp(118px, 38vw, 145px);
+    }
+
+    #interactive-mode .project-slot .model-object-wrap {
+        height: clamp(132px, 44vw, 165px);
+    }
+
+    #interactive-mode .model-object-title {
+        font-size: 0.86rem;
+    }
+
+    #interactive-mode .scanner-window {
+        min-height: 172px;
+    }
+
+    #interactive-mode .completion-pill {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
 .certificates-page-header {
     display: flex;
     justify-content: space-between;
