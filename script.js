@@ -104,6 +104,19 @@ const state = {
   theme: loadTheme(),
 };
 
+const touchDragState = {
+  itemCard: null,
+  itemId: "",
+  section: null,
+  startX: 0,
+  startY: 0,
+  currentX: 0,
+  currentY: 0,
+  pressTimer: null,
+  ghost: null,
+  isDragging: false,
+};
+
 initializeTheme();
 initializeSimpleNavigation();
 
@@ -322,6 +335,7 @@ function createModelItem(section) {
   itemCard.addEventListener("dragstart", (event) => {
     event.dataTransfer.setData("text/plain", section.id);
     event.dataTransfer.effectAllowed = "move";
+    setModelOnlyDragImage(event, itemCard);
     itemCard.classList.add("dragging");
     if (scannerStatus) {
       scannerStatus.textContent = `Checking in ${section.title}...`;
@@ -333,7 +347,203 @@ function createModelItem(section) {
     resetScannerMessage();
   });
 
+  itemCard.addEventListener("pointerdown", (event) => {
+    handleTouchDragStart(event, itemCard, section);
+  });
+
   return itemCard;
+}
+
+function handleTouchDragStart(event, itemCard, section) {
+  if (event.pointerType === "mouse" || state.checkedItems.has(section.id)) {
+    return;
+  }
+
+  resetTouchDragState();
+
+  touchDragState.itemCard = itemCard;
+  touchDragState.itemId = section.id;
+  touchDragState.section = section;
+  touchDragState.startX = event.clientX;
+  touchDragState.startY = event.clientY;
+  touchDragState.currentX = event.clientX;
+  touchDragState.currentY = event.clientY;
+  touchDragState.pressTimer = window.setTimeout(beginTouchDrag, 260);
+
+  document.addEventListener("pointermove", handleTouchDragMove, {
+    capture: true,
+    passive: false,
+  });
+  document.addEventListener("pointerup", handleTouchDragEnd, true);
+  document.addEventListener("pointercancel", handleTouchDragCancel, true);
+}
+
+function beginTouchDrag() {
+  if (!touchDragState.itemCard || !touchDragState.section) {
+    return;
+  }
+
+  const modelWrap = touchDragState.itemCard.querySelector(".model-object-wrap");
+  const sourceRect = modelWrap.getBoundingClientRect();
+  const ghost = modelWrap.cloneNode(true);
+
+  ghost.classList.add("touch-drag-ghost");
+  ghost.setAttribute("aria-hidden", "true");
+  ghost.style.width = `${sourceRect.width}px`;
+  ghost.style.height = `${sourceRect.height}px`;
+
+  touchDragState.ghost = ghost;
+  touchDragState.isDragging = true;
+  touchDragState.itemCard.classList.add("dragging", "touch-drag-source");
+  document.body.classList.add("touch-drag-active");
+  document.body.appendChild(ghost);
+  moveTouchDragGhost();
+
+  if (scannerStatus) {
+    scannerStatus.textContent = `Move ${touchDragState.section.title} into the scanner.`;
+  }
+}
+
+function setModelOnlyDragImage(event, itemCard) {
+  if (!event.dataTransfer) {
+    return;
+  }
+
+  const modelWrap = itemCard.querySelector(".model-object-wrap");
+
+  if (!modelWrap) {
+    return;
+  }
+
+  const previewRect = modelWrap.getBoundingClientRect();
+
+  try {
+    event.dataTransfer.setDragImage(
+      modelWrap,
+      previewRect.width / 2,
+      previewRect.height / 2,
+    );
+  } catch (error) {
+    // Keep the native desktop drag working if a browser rejects custom drag images.
+  }
+}
+
+function handleTouchDragMove(event) {
+  if (!touchDragState.itemCard) {
+    return;
+  }
+
+  const moveX = event.clientX - touchDragState.startX;
+  const moveY = event.clientY - touchDragState.startY;
+  const movedDistance = Math.hypot(moveX, moveY);
+
+  if (!touchDragState.isDragging) {
+    if (movedDistance > 12) {
+      resetTouchDragState();
+    }
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+
+  touchDragState.currentX = event.clientX;
+  touchDragState.currentY = event.clientY;
+  moveTouchDragGhost();
+
+  const isOverScanner = isPointInsideElement(
+    event.clientX,
+    event.clientY,
+    scannerDropZone,
+  );
+
+  scannerDropZone.classList.toggle("drag-over", isOverScanner);
+  if (scannerStatus) {
+    scannerStatus.textContent = isOverScanner
+      ? "Release to scan this portfolio item."
+      : `Move ${touchDragState.section.title} into the scanner.`;
+  }
+}
+
+function handleTouchDragEnd(event) {
+  if (!touchDragState.itemCard) {
+    resetTouchDragState();
+    return;
+  }
+
+  if (
+    touchDragState.isDragging &&
+    isPointInsideElement(event.clientX, event.clientY, scannerDropZone)
+  ) {
+    const itemId = touchDragState.itemId;
+    resetTouchDragState();
+    checkInItem(itemId);
+    return;
+  }
+
+  resetTouchDragState();
+}
+
+function handleTouchDragCancel() {
+  resetTouchDragState();
+}
+
+function moveTouchDragGhost() {
+  if (!touchDragState.ghost) {
+    return;
+  }
+
+  touchDragState.ghost.style.transform = `translate(${touchDragState.currentX}px, ${touchDragState.currentY}px) translate(-50%, -50%)`;
+}
+
+function isPointInsideElement(clientX, clientY, element) {
+  if (!element) {
+    return false;
+  }
+
+  const rect = element.getBoundingClientRect();
+  return (
+    clientX >= rect.left &&
+    clientX <= rect.right &&
+    clientY >= rect.top &&
+    clientY <= rect.bottom
+  );
+}
+
+function resetTouchDragState() {
+  if (touchDragState.pressTimer) {
+    window.clearTimeout(touchDragState.pressTimer);
+  }
+
+  if (touchDragState.ghost) {
+    touchDragState.ghost.remove();
+  }
+
+  if (touchDragState.itemCard) {
+    touchDragState.itemCard.classList.remove("dragging", "touch-drag-source");
+  }
+
+  document.body.classList.remove("touch-drag-active");
+
+  if (scannerDropZone) {
+    scannerDropZone.classList.remove("drag-over");
+  }
+
+  document.removeEventListener("pointermove", handleTouchDragMove, true);
+  document.removeEventListener("pointerup", handleTouchDragEnd, true);
+  document.removeEventListener("pointercancel", handleTouchDragCancel, true);
+
+  touchDragState.itemCard = null;
+  touchDragState.itemId = "";
+  touchDragState.section = null;
+  touchDragState.startX = 0;
+  touchDragState.startY = 0;
+  touchDragState.currentX = 0;
+  touchDragState.currentY = 0;
+  touchDragState.pressTimer = null;
+  touchDragState.ghost = null;
+  touchDragState.isDragging = false;
+  resetScannerMessage();
 }
 
 function renderInteractiveItems() {
