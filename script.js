@@ -105,6 +105,7 @@ const state = {
 };
 
 initializeTheme();
+initializeSimpleNavigation();
 
 if (itemContainer && scannerDropZone && interactiveMode) {
   initializePrototype();
@@ -127,6 +128,75 @@ function initializeTheme() {
 
   themeToggleButtons.forEach((button) => {
     button.addEventListener("click", toggleTheme);
+  });
+}
+
+function initializeSimpleNavigation() {
+  const isSimplePortfolioPage =
+    document.querySelector(".simple-portfolio") ||
+    document.querySelector(".simple-detail-page");
+
+  if (!isSimplePortfolioPage || document.querySelector(".simple-menu")) {
+    return;
+  }
+
+  const isNestedPage = window.location.pathname.includes("/pages/");
+  const pagePrefix = isNestedPage ? "./" : "./pages/";
+  const homePrefix = isNestedPage ? "../" : "./";
+  const menuItems = [
+    { label: "About Me", href: `${pagePrefix}simple-about.html` },
+    { label: "Projects", href: `${pagePrefix}simple-projects.html` },
+    { label: "Work Experience", href: `${pagePrefix}simple-experience.html` },
+    { label: "Certificates", href: `${pagePrefix}simple-certificates.html` },
+    { label: "Community", href: `${pagePrefix}simple-community.html` },
+    { label: "Leadership", href: `${pagePrefix}simple-leadership.html` },
+    { label: "Interests", href: `${pagePrefix}simple-interests.html` },
+    { label: "Contact", href: `${homePrefix}simple.html#simple-contact` },
+  ];
+
+  const menu = document.createElement("nav");
+  menu.className = "simple-menu";
+  menu.setAttribute("aria-label", "Simple portfolio segment navigation");
+  menu.innerHTML = `
+    <button class="simple-menu-toggle" type="button" aria-expanded="false" aria-controls="simple-menu-list">
+      <span class="simple-menu-icon" aria-hidden="true"></span>
+      <span class="simple-menu-label">Segments</span>
+    </button>
+    <div class="simple-menu-list" id="simple-menu-list">
+      ${menuItems
+        .map((item) => `<a href="${item.href}">${item.label}</a>`)
+        .join("")}
+    </div>
+  `;
+
+  document.body.prepend(menu);
+
+  const toggleButton = menu.querySelector(".simple-menu-toggle");
+  const menuLinks = menu.querySelectorAll(".simple-menu-list a");
+
+  function setMenuOpen(isOpen) {
+    menu.classList.toggle("is-open", isOpen);
+    toggleButton.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  toggleButton.addEventListener("click", () => {
+    setMenuOpen(!menu.classList.contains("is-open"));
+  });
+
+  menuLinks.forEach((link) => {
+    link.addEventListener("click", () => setMenuOpen(false));
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!menu.contains(event.target)) {
+      setMenuOpen(false);
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      setMenuOpen(false);
+    }
   });
 }
 

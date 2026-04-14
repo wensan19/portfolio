@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interests | Airport Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="section-page-body">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
+
+    <main class="section-page-main">
+        <article class="section-page-card showcase-page showcase-page--interests simple-detail-page fade-up show">
+            <div class="showcase-page-header">
+                <div class="showcase-header-copy">
+                    <p class="zone-kicker">Destination 02 - Interests</p>
+                    <h1>Interests</h1>
+                    <p>
+                        This page highlights the interests and hobbies that shape how I think, create, and connect with
+                        the world around me.
+                    </p>
+                </div>
+
+                <div class="showcase-view-toggle">
+                    <button class="showcase-toggle-button" id="view-all-button" type="button">View All</button>
+                    <button class="showcase-toggle-button is-hidden" id="view-carousel-button" type="button">
+                        Back to Slideshow
+                    </button>
+                </div>
+            </div>
+
+            <section class="showcase-carousel-shell" id="showcase-carousel-shell" aria-label="Interests slideshow">
+                <div class="showcase-carousel-card">
+                    <div class="showcase-text-panel">
+                        <p class="showcase-label" id="showcase-label">Interest</p>
+                        <h2 class="showcase-title" id="showcase-title">Volleyball</h2>
+                        <p class="showcase-meta" id="showcase-meta">Teamwork &amp; Personal Growth</p>
+                        <p class="showcase-description" id="showcase-description">
+                            Volleyball has taught me how important trust, discipline, and communication are when
+                            working towards a shared goal.
+                        </p>
+                    </div>
+
+                    <div class="showcase-image-panel">
+                        <div class="showcase-image-frame">
+                            <img id="showcase-main-image" src="../assets/images/interests-volleyball-placeholder.jpg"
+                                alt="Interests preview">
+                        </div>
+
+                        <div class="showcase-carousel-controls">
+                            <div class="showcase-nav-buttons">
+                                <button class="showcase-nav-button" id="previous-showcase-button" type="button">
+                                    ← Previous
+                                </button>
+                                <button class="showcase-nav-button" id="next-showcase-button" type="button">
+                                    Next →
+                                </button>
+                            </div>
+
+                            <p class="showcase-slide-counter" id="showcase-slide-counter">1 / 4</p>
+                        </div>
+                    </div>
+
+                    <ul class="showcase-highlights simple-detail-highlights" id="showcase-highlights"></ul>
+                </div>
+            </section>
+
+            <section class="showcase-gallery-shell is-hidden" id="showcase-gallery-shell" aria-label="All interests">
+                <h2>All Interests</h2>
+                <div class="showcase-gallery-grid" id="showcase-gallery-grid"></div>
+            </section>
+
+            <div class="section-page-actions">
+                <a class="plane-button" href="./simple-about.html">Next Segment</a>
+                <a class="plane-button simple-exit-button" href="../simple.html">Exit</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="./showcase-page.js"></script>
+    <script src="./interests.js"></script>
+</body>
+
+</html>

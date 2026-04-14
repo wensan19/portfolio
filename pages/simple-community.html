@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community &amp; Enrichment | Airport Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="section-page-body">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
+
+    <main class="section-page-main">
+        <article class="section-page-card simple-detail-page fade-up show">
+            <div class="community-page-header">
+                <div class="community-header-copy">
+                    <p class="zone-kicker">Destination 06 - Community &amp; Enrichment</p>
+                    <h1>Community &amp; Enrichment</h1>
+                    <p>
+                        This page brings together community experiences, service learning moments, and meaningful
+                        memories that reflect care, connection, and personal growth.
+                    </p>
+                </div>
+
+                <div class="community-view-toggle">
+                    <button class="community-toggle-button" id="community-view-all-button" type="button">View All</button>
+                    <button class="community-toggle-button is-hidden" id="community-view-carousel-button"
+                        type="button">
+                        Back to Slideshow
+                    </button>
+                </div>
+            </div>
+
+            <div class="community-filter-row" role="group" aria-label="Community content filter">
+                <button class="community-filter-button" id="community-filter-both" type="button">
+                    Both
+                </button>
+                <button class="community-filter-button is-active" id="community-filter-community" type="button">
+                    Community
+                </button>
+                <button class="community-filter-button" id="community-filter-enrichment" type="button">
+                    Enrichment
+                </button>
+            </div>
+
+            <section class="community-carousel-shell" id="community-carousel-shell"
+                aria-label="Community slideshow">
+                <div class="community-carousel-card">
+                    <div class="community-text-panel">
+                        <p class="community-label" id="community-label">Community Experience</p>
+                        <h2 class="community-title" id="community-title">Community Service with Deaf Community @ SP</h2>
+                        <p class="community-meta" id="community-meta">Service Learning</p>
+                        <p class="community-description" id="community-description">
+                            This experience reminded me how meaningful inclusion can be when people are given space to
+                            connect, participate, and feel understood.
+                        </p>
+                    </div>
+
+                    <div class="community-image-panel">
+                        <div class="community-image-frame">
+                            <img id="community-main-image" src="../assets/images/community-service-placeholder.jpg"
+                                alt="Community experience preview">
+                        </div>
+
+                        <div class="community-carousel-controls">
+                            <div class="community-nav-buttons">
+                                <button class="community-nav-button" id="previous-community-button" type="button">
+                                    ← Previous
+                                </button>
+                                <button class="community-nav-button" id="next-community-button" type="button">
+                                    Next →
+                                </button>
+                            </div>
+
+                            <p class="community-slide-counter" id="community-slide-counter">1 / 4</p>
+                        </div>
+                    </div>
+
+                    <ul class="community-highlights simple-detail-highlights" id="community-highlights"></ul>
+                </div>
+            </section>
+
+            <section class="community-gallery-shell is-hidden" id="community-gallery-shell"
+                aria-label="All community experiences">
+                <h2>All Community Memories</h2>
+                <div class="community-gallery-grid" id="community-gallery-grid"></div>
+            </section>
+
+            <div class="section-page-actions">
+                <a class="plane-button" href="./simple-leadership.html">Next Segment</a>
+                <a class="plane-button simple-exit-button" href="../simple.html">Exit</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="./community.js"></script>
+</body>
+
+</html>

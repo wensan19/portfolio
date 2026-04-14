@@ -449,6 +449,11 @@ function createShowcasePage(showcaseData) {
       const actionLinks = document.createElement("div");
       actionLinks.className = "showcase-action-links";
       actionLinks.id = "showcase-action-links";
+      const shouldPlaceActionsAboveMedia =
+        Boolean(document.querySelector(".simple-detail-page.showcase-page--projects")) &&
+        Boolean(entry.embedUrl) &&
+        Boolean(showcaseImagePanel) &&
+        Boolean(showcaseImageFrame);
 
       entry.links.forEach((link) => {
         const actionLink = document.createElement("a");
@@ -460,7 +465,11 @@ function createShowcasePage(showcaseData) {
         actionLinks.appendChild(actionLink);
       });
 
-      showcaseHighlights.insertAdjacentElement("afterend", actionLinks);
+      if (shouldPlaceActionsAboveMedia) {
+        showcaseImagePanel.insertBefore(actionLinks, showcaseImageFrame);
+      } else {
+        showcaseHighlights.insertAdjacentElement("afterend", actionLinks);
+      }
     }
 
     if (entry.additionalPdf) {

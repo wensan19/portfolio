@@ -932,6 +932,109 @@ body.dark-theme .simple-portfolio-nav {
     background: rgba(9, 17, 31, 0.68);
 }
 
+.simple-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 31;
+    display: grid;
+    gap: 10px;
+    width: min(260px, calc(100vw - 40px));
+}
+
+.simple-menu-toggle {
+    width: max-content;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border: 1px solid rgba(126, 176, 222, 0.28);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.58);
+    color: var(--text-main);
+    font-size: 0.92rem;
+    font-weight: 800;
+    box-shadow: 0 10px 22px rgba(121, 154, 199, 0.16);
+    backdrop-filter: blur(10px);
+}
+
+.simple-menu-icon,
+.simple-menu-icon::before,
+.simple-menu-icon::after {
+    width: 16px;
+    height: 2px;
+    display: block;
+    border-radius: 999px;
+    background: currentColor;
+}
+
+.simple-menu-icon {
+    position: relative;
+}
+
+.simple-menu-icon::before,
+.simple-menu-icon::after {
+    content: "";
+    position: absolute;
+    left: 0;
+}
+
+.simple-menu-icon::before {
+    top: -6px;
+}
+
+.simple-menu-icon::after {
+    top: 6px;
+}
+
+.simple-menu-list {
+    display: none;
+    gap: 6px;
+    padding: 12px;
+    border-radius: 8px;
+    background: rgba(248, 252, 255, 0.96);
+    border: 1px solid rgba(126, 176, 222, 0.2);
+    box-shadow: 0 16px 34px rgba(121, 154, 199, 0.2);
+    backdrop-filter: blur(12px);
+}
+
+.simple-menu.is-open .simple-menu-list {
+    display: grid;
+}
+
+.simple-menu-list a {
+    padding: 11px 12px;
+    border-radius: 8px;
+    color: var(--text-main);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.simple-menu-list a:hover,
+.simple-menu-list a:focus-visible {
+    background: rgba(229, 242, 255, 0.86);
+    color: var(--deep-lavender);
+}
+
+body.dark-theme .simple-menu-toggle {
+    background: rgba(20, 30, 48, 0.58);
+    border-color: rgba(130, 162, 214, 0.28);
+    box-shadow: 0 12px 24px rgba(5, 10, 20, 0.32);
+}
+
+body.dark-theme .simple-menu-list {
+    background: rgba(20, 30, 48, 0.96);
+    border-color: rgba(130, 162, 214, 0.28);
+    box-shadow: 0 18px 34px rgba(5, 10, 20, 0.38);
+}
+
+body.dark-theme .simple-menu-list a:hover,
+body.dark-theme .simple-menu-list a:focus-visible {
+    background: rgba(49, 68, 102, 0.76);
+    color: #d9e4ff;
+}
+
 .simple-brand {
     color: var(--text-main);
     font-size: 1.25rem;
@@ -1692,6 +1795,60 @@ body.dark-theme .about-document-button {
     box-shadow: 0 14px 24px rgba(109, 177, 231, 0.26);
 }
 
+.simple-detail-page .section-page-actions {
+    display: grid;
+    gap: 0.85rem;
+}
+
+.simple-detail-page .showcase-carousel-card,
+.simple-detail-page .certificate-carousel-card,
+.simple-detail-page .community-carousel-card,
+.simple-detail-page .experience-carousel-card {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.simple-detail-page .showcase-image-panel,
+.simple-detail-page .certificate-image-panel,
+.simple-detail-page .community-image-panel,
+.simple-detail-page .experience-media-panel {
+    order: 2;
+}
+
+.simple-detail-page .showcase-text-panel,
+.simple-detail-page .certificate-text-panel,
+.simple-detail-page .community-text-panel {
+    order: 1;
+}
+
+.simple-detail-page .simple-detail-highlights {
+    order: 3;
+}
+
+.simple-detail-page .showcase-gallery-card,
+.simple-detail-page .certificate-gallery-card,
+.simple-detail-page .community-gallery-card,
+.simple-detail-page.showcase-page--projects .showcase-gallery-card--document {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.simple-detail-page .showcase-image-frame img,
+.simple-detail-page .certificate-image-frame img,
+.simple-detail-page .community-image-frame img {
+    object-fit: contain;
+}
+
+.simple-detail-page .simple-exit-button {
+    background: linear-gradient(135deg, #ffdce9, #f0d6ff);
+    color: #755676;
+    box-shadow: 0 12px 22px rgba(223, 177, 210, 0.22);
+}
+
+body.dark-theme .simple-detail-page .simple-exit-button {
+    background: linear-gradient(135deg, rgba(117, 72, 97, 0.95), rgba(143, 84, 118, 0.95));
+    color: #ffe4f1;
+    box-shadow: 0 12px 22px rgba(5, 10, 20, 0.28);
+}
+
 .celebration-overlay .overlay-panel {
     width: min(860px, 100%);
 }
@@ -1955,6 +2112,17 @@ body.dark-theme .overlay-backdrop {
     .theme-toggle-sun,
     .theme-toggle-moon {
         font-size: 1.2rem;
+    }
+
+    .simple-menu {
+        top: 12px;
+        left: 12px;
+        width: min(250px, calc(100vw - 24px));
+    }
+
+    .simple-menu-toggle {
+        min-height: 38px;
+        padding: 8px 11px;
     }
 
     .scanner-window,
@@ -3778,4 +3946,354 @@ body.dark-theme .experience-zoom-panel {
         min-height: 215px;
         padding: 0.8rem;
     }
+}
+
+@media (max-width: 640px) {
+    .section-page-main {
+        width: 100%;
+        padding: 18px 16px 56px;
+    }
+
+    .section-page-card,
+    .resume-page-main,
+    .showcase-page,
+    .showcase-page--projects,
+    .experience-page {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .section-page-card {
+        padding: 18px 0 28px;
+    }
+
+    .section-page-card h1,
+    .resume-document-header h1,
+    .showcase-page-header h1 {
+        font-size: 2rem;
+        line-height: 1.12;
+        overflow-wrap: anywhere;
+    }
+
+    .section-page-card p,
+    .section-page-card li,
+    .resume-section p,
+    .resume-section li,
+    .showcase-description,
+    .showcase-highlights,
+    .certificate-description,
+    .certificate-highlights,
+    .community-description,
+    .community-highlights {
+        font-size: 0.98rem;
+        line-height: 1.65;
+    }
+
+    .section-page-actions,
+    .resume-action-row,
+    .about-link-row,
+    .recommendation-action-row {
+        width: 100%;
+    }
+
+    .about-document-button,
+    .section-page-actions .plane-button,
+    .resume-action-row .plane-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .memory-card {
+        margin-top: 22px;
+        padding-top: 14px;
+    }
+
+    .memory-card::before {
+        width: 42px;
+        height: 42px;
+        right: 10px;
+    }
+
+    .memory-photo-frame {
+        padding: 8px;
+        border-radius: 18px;
+    }
+
+    .memory-photo-frame img {
+        height: auto;
+        max-height: 380px;
+        object-fit: contain;
+    }
+
+    .resume-document {
+        padding: 20px 0 36px;
+        gap: 1.25rem;
+    }
+
+    .resume-action-row .about-document-button {
+        width: 100%;
+    }
+
+    .simple-portfolio {
+        width: 100%;
+    }
+
+    .simple-hero-copy h1,
+    .simple-section h2 {
+        white-space: normal;
+        font-size: 2.15rem;
+        line-height: 1.12;
+        overflow-wrap: anywhere;
+    }
+
+    .simple-hero-copy>p,
+    .simple-view-card p {
+        font-size: 0.98rem;
+        line-height: 1.65;
+    }
+
+    .simple-section-heading {
+        gap: 0.65rem;
+        margin-bottom: 1rem;
+    }
+
+    .simple-view-all-grid {
+        gap: 1rem;
+    }
+
+    .simple-view-card {
+        gap: 0.7rem;
+    }
+
+    .simple-view-card img,
+    .simple-view-card--wide img,
+    .simple-project-row img,
+    .simple-journey-list img,
+    .simple-image-strip img,
+    .simple-image-strip figure:first-child img,
+    .simple-hero-photo,
+    .simple-hero-photo--main {
+        object-fit: contain;
+        background: rgba(229, 236, 252, 0.72);
+    }
+
+    .simple-view-card img,
+    .simple-view-card--wide img {
+        height: auto;
+        min-height: 0;
+        max-height: 260px;
+        aspect-ratio: auto;
+    }
+
+    .simple-image-strip img,
+    .simple-image-strip figure:first-child img,
+    .simple-journey-list img,
+    .simple-hero-photo,
+    .simple-hero-photo--main {
+        height: auto;
+        max-height: 280px;
+    }
+
+    .certificates-page-header,
+    .community-page-header,
+    .showcase-page-header {
+        gap: 1rem;
+        margin-bottom: 1.4rem;
+    }
+
+    .certificates-view-toggle,
+    .community-view-toggle,
+    .showcase-view-toggle {
+        width: 100%;
+    }
+
+    .certificate-carousel-card,
+    .community-carousel-card,
+    .showcase-carousel-card,
+    .experience-carousel-card {
+        gap: 1.25rem;
+    }
+
+    .certificate-image-frame,
+    .community-image-frame,
+    .showcase-image-frame,
+    .experience-media-frame,
+    .experience-website-image-frame {
+        padding: 0.65rem;
+        border-radius: 18px;
+    }
+
+    .certificate-image-frame img,
+    .certificate-gallery-card img,
+    .community-image-frame img,
+    .community-gallery-card img,
+    .showcase-image-frame img,
+    .showcase-gallery-card img,
+    .experience-media-frame img,
+    .experience-gallery-card img,
+    .experience-website-image-frame img,
+    .recommendation-preview-image,
+    .showcase-page--recommendation .showcase-gallery-card img {
+        width: 100%;
+        height: auto;
+        max-height: 340px;
+        object-fit: contain;
+        object-position: center;
+    }
+
+    .showcase-video-embed,
+    .experience-video-embed {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+    .showcase-page--projects .showcase-image-frame img,
+    .showcase-page--projects .showcase-video-embed,
+    .showcase-page--projects .showcase-gallery-card img,
+    .showcase-page--projects .showcase-gallery-card .showcase-video-embed {
+        height: auto;
+        max-height: 360px;
+        object-fit: contain;
+    }
+
+    .showcase-page--projects .showcase-carousel-shell,
+    .showcase-page--projects .showcase-gallery-shell,
+    .showcase-page--recommendation .showcase-image-panel,
+    .showcase-page--recommendation .showcase-gallery-card {
+        left: 0;
+        width: 100%;
+    }
+
+    .showcase-page--projects .document-viewer,
+    .showcase-page--projects .showcase-gallery-card .document-viewer,
+    .document-viewer {
+        height: min(520px, 70vh);
+    }
+
+    .project-pdf-viewer-frame {
+        height: min(520px, 68vh);
+    }
+
+    .notebook-preview-pane,
+    .notebook-output-text,
+    .notebook-cell-source {
+        overflow-wrap: anywhere;
+    }
+
+    .showcase-gallery-grid,
+    .certificates-gallery-grid,
+    .community-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .showcase-gallery-card,
+    .certificate-gallery-card,
+    .community-gallery-card {
+        min-width: 0;
+    }
+
+    .showcase-action-link,
+    .showcase-nav-button,
+    .showcase-toggle-button,
+    .certificate-nav-button,
+    .certificates-toggle-button,
+    .community-nav-button,
+    .community-filter-button,
+    .community-toggle-button {
+        min-height: 44px;
+    }
+
+    .showcase-zoom-panel,
+    .experience-zoom-panel {
+        width: calc(100vw - 28px);
+        max-height: 82vh;
+        padding: 0.65rem;
+        border-radius: 18px;
+    }
+
+    .showcase-zoom-panel img,
+    .experience-zoom-panel img {
+        max-height: calc(82vh - 1.3rem);
+    }
+
+    .showcase-zoom-close,
+    .experience-zoom-close {
+        top: 0.65rem;
+        right: 0.65rem;
+        width: 44px;
+        height: 44px;
+    }
+}
+
+@media (max-width: 420px) {
+    .section-page-main {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .simple-hero-copy h1,
+    .simple-section h2,
+    .section-page-card h1,
+    .resume-document-header h1,
+    .showcase-page-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .certificate-image-frame img,
+    .certificate-gallery-card img,
+    .community-image-frame img,
+    .community-gallery-card img,
+    .showcase-image-frame img,
+    .showcase-gallery-card img,
+    .experience-media-frame img,
+    .experience-gallery-card img,
+    .experience-website-image-frame img,
+    .recommendation-preview-image {
+        max-height: 300px;
+    }
+}
+
+.simple-detail-page.showcase-page--projects,
+.simple-detail-page.experience-page {
+    left: 0;
+    width: min(95vw, 1100px);
+}
+
+.simple-detail-page.showcase-page--projects .showcase-carousel-shell,
+.simple-detail-page.showcase-page--projects .showcase-gallery-shell {
+    left: 0;
+}
+
+.simple-detail-page.showcase-page--projects .showcase-carousel-card,
+.simple-detail-page.showcase-page--projects .showcase-carousel-card--document,
+.simple-detail-page.showcase-page--projects .showcase-gallery-card--document,
+.simple-detail-page .showcase-carousel-card,
+.simple-detail-page .certificate-carousel-card,
+.simple-detail-page .community-carousel-card,
+.simple-detail-page .experience-carousel-card {
+    grid-template-columns: minmax(0, 1fr);
+}
+
+.simple-detail-page .showcase-image-panel,
+.simple-detail-page .certificate-image-panel,
+.simple-detail-page .community-image-panel,
+.simple-detail-page .experience-media-panel {
+    order: 2;
+}
+
+.simple-detail-page .showcase-text-panel,
+.simple-detail-page .certificate-text-panel,
+.simple-detail-page .community-text-panel {
+    order: 1;
+}
+
+.simple-detail-page .simple-detail-highlights {
+    order: 3;
+}
+
+.simple-detail-page .showcase-gallery-card,
+.simple-detail-page .certificate-gallery-card,
+.simple-detail-page .community-gallery-card,
+.simple-detail-page.showcase-page--projects .showcase-gallery-card--document {
+    grid-template-columns: minmax(0, 1fr);
 }

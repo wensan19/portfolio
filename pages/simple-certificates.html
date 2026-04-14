@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates | Airport Portfolio</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="section-page-body">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode">
+        <span class="theme-toggle-sun" aria-hidden="true">☀</span>
+        <span class="theme-toggle-moon" aria-hidden="true">☾</span>
+    </button>
+
+    <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
+    <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
+
+    <main class="section-page-main">
+        <article class="section-page-card simple-detail-page fade-up show">
+            <div class="certificates-page-header">
+                <div class="certificates-header-copy">
+                    <p class="zone-kicker">Destination 03 - Certificates</p>
+                    <h1>Certificates</h1>
+                    <p>
+                        This page highlights certifications, learning experiences, and achievements.
+                    </p>
+                </div>
+
+                <div class="certificates-view-toggle">
+                    <button class="certificates-toggle-button" id="view-all-button" type="button">View All</button>
+                    <button class="certificates-toggle-button is-hidden" id="view-carousel-button" type="button">
+                        Back to Slideshow
+                    </button>
+                </div>
+            </div>
+
+            <section class="certificates-carousel-shell" id="certificates-carousel-shell"
+                aria-label="Certificates slideshow">
+                <div class="certificate-carousel-card">
+                    <div class="certificate-text-panel">
+                        <p class="certificate-label" id="certificate-label">Certificate</p>
+                        <h2 class="certificate-title" id="certificate-title">CPR + AED Certification</h2>
+                        <p class="certificate-meta" id="certificate-meta">Singapore Polytechnic &bull; 2025</p>
+                        <p class="certificate-description" id="certificate-description">
+                            This certification reflects my readiness to respond calmly and responsibly in emergency
+                            situations.
+                        </p>
+                    </div>
+
+                    <div class="certificate-image-panel">
+                        <div class="certificate-image-frame">
+                            <img id="certificate-main-image" src="../assets/images/CPR_cert.jpeg"
+                                alt="Certificate preview">
+                        </div>
+
+                        <div class="certificate-carousel-controls">
+                            <div class="certificate-nav-buttons">
+                                <button class="certificate-nav-button" id="previous-certificate-button" type="button">
+                                    ← Previous
+                                </button>
+                                <button class="certificate-nav-button" id="next-certificate-button" type="button">
+                                    Next →
+                                </button>
+                            </div>
+
+                            <p class="certificate-slide-counter" id="certificate-slide-counter">1 / 4</p>
+                        </div>
+                    </div>
+
+                    <ul class="certificate-highlights simple-detail-highlights" id="certificate-highlights"></ul>
+                </div>
+            </section>
+
+            <section class="certificates-gallery-shell is-hidden" id="certificates-gallery-shell"
+                aria-label="All certificates">
+                <h2>All Certificates</h2>
+                <div class="certificates-gallery-grid" id="certificates-gallery-grid"></div>
+            </section>
+
+            <div class="section-page-actions">
+                <a class="plane-button" href="./simple-community.html">Next Segment</a>
+                <a class="plane-button simple-exit-button" href="../simple.html">Exit</a>
+            </div>
+        </article>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Wen San &bull; Portfolio Website</p>
+    </footer>
+
+    <script src="../script.js"></script>
+    <script src="./certificates.js"></script>
+</body>
+
+</html>
+
