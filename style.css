@@ -1,4 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap");
+
 :root {
+    --font-body: "Inter", "Segoe UI", Arial, sans-serif;
+    --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --font-ui: "Inter", "Segoe UI", Arial, sans-serif;
+    --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
     --sky-blue: #dff2ff;
     --baby-blue: #a8d8ff;
     --soft-blue: #7fc5ff;
@@ -39,7 +45,10 @@ html {
 
 body {
     margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.65;
     color: var(--text-main);
     background:
         radial-gradient(circle at top left, rgba(255, 224, 241, 0.7), transparent 35%),
@@ -47,6 +56,9 @@ body {
         linear-gradient(180deg, #eef8ff 0%, #f7f8ff 50%, #fff7fc 100%);
     min-height: 100vh;
     overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.dark-theme {
@@ -63,6 +75,37 @@ body.overlay-open {
 button,
 a {
     font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    line-height: 1.08;
+}
+
+p,
+li,
+dd,
+dt {
+    line-height: 1.72;
+}
+
+strong,
+b {
+    font-weight: 700;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+    font-family: var(--font-ui);
 }
 
 button {
@@ -168,9 +211,10 @@ body.dark-theme .theme-toggle {
     margin: 0 0 10px;
     color: var(--deep-lavender);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     font-size: 0.74rem;
     font-weight: 700;
+    font-family: var(--font-ui);
 }
 
 .brand-panel h1,
@@ -184,7 +228,7 @@ body.dark-theme .theme-toggle {
 .overlay-panel h2,
 .boarding-main h3 {
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
 }
 
 .intro-text,
@@ -200,7 +244,7 @@ body.dark-theme .theme-toggle {
 .boarding-main p,
 .simple-profile-photo p {
     color: var(--text-soft);
-    line-height: 1.7;
+    line-height: 1.72;
 }
 
 .mode-panel {
@@ -245,7 +289,7 @@ body.dark-theme .theme-toggle {
 .mode-button {
     min-width: 240px;
     font-size: 1.04rem;
-    font-weight: 700;
+    font-weight: 600;
     background: rgba(255, 255, 255, 0.88);
     color: var(--text-main);
     box-shadow: 0 8px 18px rgba(121, 154, 199, 0.14);
@@ -282,6 +326,7 @@ body.dark-theme .mode-button {
 
 .brand-panel h1 {
     font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 600;
 }
 
 .prototype-flow-banner {
@@ -300,6 +345,8 @@ body.dark-theme .mode-button {
 
 .prototype-flow-banner h3 {
     font-size: clamp(1.25rem, 2vw, 1.6rem);
+    font-weight: 600;
+    line-height: 1.18;
 }
 
 .interactive-top-grid,
@@ -638,7 +685,7 @@ body.dark-theme .scanner-window {
     margin-bottom: 10px;
     color: #a0d9ff;
     font-size: 0.76rem;
-    letter-spacing: 0.1em;
+    letter-spacing: 0;
     text-transform: uppercase;
 }
 
@@ -974,7 +1021,7 @@ body.dark-theme .simple-portfolio-nav {
     background: rgba(255, 255, 255, 0.58);
     color: var(--text-main);
     font-size: 0.92rem;
-    font-weight: 800;
+    font-weight: 700;
     box-shadow: 0 10px 22px rgba(121, 154, 199, 0.16);
     backdrop-filter: blur(10px);
 }
@@ -1027,7 +1074,7 @@ body.dark-theme .simple-portfolio-nav {
     padding: 11px 12px;
     border-radius: 8px;
     color: var(--text-main);
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -1058,7 +1105,7 @@ body.dark-theme .simple-menu-list a:focus-visible {
 .simple-brand {
     color: var(--text-main);
     font-size: 1.25rem;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -1074,7 +1121,7 @@ body.dark-theme .simple-menu-list a:focus-visible {
 .simple-project-row>a,
 .simple-contact-links a {
     color: var(--text-main);
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -1106,16 +1153,18 @@ body.dark-theme .simple-menu-list a:focus-visible {
     margin: 0 0 0.75rem;
     color: var(--deep-lavender);
     font-size: 0.78rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0;
     text-transform: uppercase;
+    font-family: var(--font-ui);
 }
 
 .simple-hero-copy h1,
 .simple-section h2 {
     margin: 0;
     color: var(--text-main);
-    line-height: 1.05;
+    line-height: 1.02;
+    font-weight: 600;
 }
 
 .simple-hero-copy h1 {
@@ -1134,12 +1183,13 @@ body.dark-theme .simple-menu-list a:focus-visible {
 .simple-journey-list p,
 .simple-contact-section p {
     color: var(--text-soft);
-    line-height: 1.75;
+    line-height: 1.74;
 }
 
 .simple-hero-copy>p {
     max-width: 680px;
     font-size: 1.08rem;
+    font-weight: 400;
 }
 
 .simple-hero-actions,
@@ -1206,15 +1256,16 @@ body.dark-theme .simple-menu-list a:focus-visible {
 .simple-project-row span {
     color: var(--deep-lavender);
     font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0;
     text-transform: uppercase;
+    font-family: var(--font-ui);
 }
 
 .simple-boarding-summary dd {
     margin: 0;
     color: var(--text-main);
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .simple-section {
@@ -1242,7 +1293,7 @@ body.dark-theme .simple-menu-list a:focus-visible {
     background: rgba(255, 255, 255, 0.68);
     border: 1px solid rgba(126, 176, 222, 0.16);
     color: var(--text-main);
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .simple-section-heading {
@@ -1385,7 +1436,7 @@ body.dark-theme .simple-menu-list a:focus-visible {
 .simple-view-card a {
     justify-self: start;
     color: var(--text-main);
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
 }
 
@@ -1425,7 +1476,7 @@ body.dark-theme .simple-menu-list a:focus-visible {
 
 .simple-image-strip figcaption {
     color: var(--text-main);
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .simple-contact-section {
@@ -1581,7 +1632,7 @@ body.dark-theme .simple-image-strip figcaption {
 
 .resume-section a {
     color: var(--heading-color);
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .section-page-body {
@@ -1692,7 +1743,7 @@ body.dark-theme .simple-image-strip figcaption {
     margin: 0 0 8px;
     color: var(--deep-lavender);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     font-size: 0.72rem;
     font-weight: 700;
 }
@@ -2499,7 +2550,7 @@ body.dark-theme .overlay-backdrop {
     margin: 0;
     color: var(--deep-lavender);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     font-size: 0.72rem;
     font-weight: 700;
 }
@@ -2753,7 +2804,7 @@ body.dark-theme .certificate-nav-button {
     margin: 0;
     color: #c284af;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0;
     font-size: 0.72rem;
     font-weight: 700;
 }
@@ -3044,8 +3095,8 @@ body.dark-theme .community-filter-button.is-active {
 .notebook-cell-label {
     margin: 0;
     font-size: 0.72rem;
-    font-weight: 800;
-    letter-spacing: 0.12em;
+    font-weight: 700;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--accent-color);
 }
@@ -3075,7 +3126,7 @@ body.dark-theme .community-filter-button.is-active {
     padding: 0.65rem 0.85rem;
     font: inherit;
     font-size: 0.9rem;
-    font-weight: 800;
+    font-weight: 700;
     text-decoration: none;
     transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
@@ -3152,7 +3203,7 @@ body.dark-theme .community-filter-button.is-active {
 
 pre.notebook-cell-source,
 .notebook-output-text {
-    font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    font-family: var(--font-mono);
     font-size: 0.82rem;
 }
 
@@ -3303,7 +3354,7 @@ pre.notebook-cell-source,
     margin: 0;
     font-size: 0.95rem;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0;
     color: var(--heading-color);
 }
 
@@ -3318,7 +3369,7 @@ pre.notebook-cell-source,
     margin: 0;
     font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.18em;
+    letter-spacing: 0;
     text-transform: uppercase;
     color: var(--accent-color);
 }
