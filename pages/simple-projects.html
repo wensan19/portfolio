@@ -28,6 +28,24 @@
                     </p>
                 </div>
 
+            </div>
+
+            <div class="project-controls" aria-label="Project display controls">
+                <div class="project-filter-row" role="group" aria-label="Filter projects by category">
+                    <button class="project-filter-button is-active" type="button" data-project-filter="academic"
+                        aria-pressed="true">
+                        Academic Projects
+                    </button>
+                    <button class="project-filter-button" type="button" data-project-filter="independent"
+                        aria-pressed="false">
+                        Independent Projects
+                    </button>
+                    <button class="project-filter-button" type="button" data-project-filter="professional"
+                        aria-pressed="false">
+                        Professional Work
+                    </button>
+                </div>
+
                 <div class="showcase-view-toggle">
                     <button class="showcase-toggle-button" id="view-all-button" type="button">View All</button>
                     <button class="showcase-toggle-button is-hidden" id="view-carousel-button" type="button">
@@ -35,6 +53,10 @@
                     </button>
                 </div>
             </div>
+
+            <p class="project-empty-state is-hidden" id="project-empty-state">
+                Projects for this category will be added soon.
+            </p>
 
             <section class="showcase-carousel-shell" id="showcase-carousel-shell" aria-label="Projects slideshow">
                 <div class="showcase-carousel-card">

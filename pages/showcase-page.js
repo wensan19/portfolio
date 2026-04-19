@@ -284,6 +284,10 @@ function createShowcasePage(showcaseData) {
     frame.title = `${projectTitle} PDF`;
     frame.loading = "lazy";
 
+    const description = pdfEntry.description
+      ? createTextElement("p", "project-pdf-viewer-description", pdfEntry.description)
+      : null;
+
     const footer = document.createElement("div");
     footer.className = "document-viewer-footer";
 
@@ -297,6 +301,9 @@ function createShowcasePage(showcaseData) {
 
     viewer.appendChild(header);
     viewer.appendChild(frame);
+    if (description) {
+      viewer.appendChild(description);
+    }
     viewer.appendChild(footer);
 
     return viewer;
@@ -406,9 +413,23 @@ function createShowcasePage(showcaseData) {
   function renderShowcase(index) {
     const entry = showcaseData[index];
     const existingPdfViewer = showcaseCarouselShell.querySelector(".project-pdf-viewer-widget");
+    const existingMobileDescription = showcaseImagePanel
+      ? showcaseImagePanel.querySelector(".project-mobile-showcase-description")
+      : null;
+    const existingMobileActions = showcaseImagePanel
+      ? showcaseImagePanel.querySelector(".showcase-action-links--mobile")
+      : null;
 
     if (existingPdfViewer) {
       existingPdfViewer.remove();
+    }
+
+    if (existingMobileDescription) {
+      existingMobileDescription.remove();
+    }
+
+    if (existingMobileActions) {
+      existingMobileActions.remove();
     }
 
     if (showcaseCarouselCard) {
@@ -445,33 +466,6 @@ function createShowcasePage(showcaseData) {
       existingActions.remove();
     }
 
-    if (entry.links && entry.links.length > 0) {
-      const actionLinks = document.createElement("div");
-      actionLinks.className = "showcase-action-links";
-      actionLinks.id = "showcase-action-links";
-      const shouldPlaceActionsAboveMedia =
-        Boolean(document.querySelector(".simple-detail-page.showcase-page--projects")) &&
-        Boolean(entry.embedUrl) &&
-        Boolean(showcaseImagePanel) &&
-        Boolean(showcaseImageFrame);
-
-      entry.links.forEach((link) => {
-        const actionLink = document.createElement("a");
-        actionLink.className = "showcase-action-link";
-        actionLink.href = link.url;
-        actionLink.target = "_blank";
-        actionLink.rel = "noopener noreferrer";
-        actionLink.textContent = link.label;
-        actionLinks.appendChild(actionLink);
-      });
-
-      if (shouldPlaceActionsAboveMedia) {
-        showcaseImagePanel.insertBefore(actionLinks, showcaseImageFrame);
-      } else {
-        showcaseHighlights.insertAdjacentElement("afterend", actionLinks);
-      }
-    }
-
     if (entry.additionalPdf) {
       const pdfViewer = createAdditionalPdfViewer(entry.additionalPdf, entry.title);
 
@@ -480,6 +474,56 @@ function createShowcasePage(showcaseData) {
       } else {
         showcaseCarouselShell.appendChild(pdfViewer);
       }
+    }
+
+    if (entry.description && showcaseImagePanel && showcaseCarouselControls) {
+      const mobileDescription = createTextElement(
+        "p",
+        "project-mobile-showcase-description",
+        entry.description
+      );
+      showcaseImagePanel.insertBefore(mobileDescription, showcaseCarouselControls);
+    }
+
+    if (entry.links && entry.links.length > 0) {
+      const actionLinks = document.createElement("div");
+      actionLinks.className = "showcase-action-links showcase-action-links--desktop";
+      actionLinks.id = "showcase-action-links";
+      const hasWebsiteCta = entry.links.some((link) => link.isWebsiteCta);
+      if (hasWebsiteCta) {
+        actionLinks.classList.add("showcase-action-links--website");
+      }
+      const shouldPlaceActionsAboveMedia =
+        Boolean(document.querySelector(".simple-detail-page.showcase-page--projects")) &&
+        Boolean(entry.embedUrl) &&
+        !hasWebsiteCta &&
+        Boolean(showcaseImagePanel) &&
+        Boolean(showcaseImageFrame);
+
+      entry.links.forEach((link) => {
+        const actionLink = document.createElement("a");
+        actionLink.className = "showcase-action-link";
+        if (link.isWebsiteCta) {
+          actionLink.classList.add("showcase-action-link--text");
+        }
+        actionLink.href = link.url;
+        actionLink.target = "_blank";
+        actionLink.rel = "noopener noreferrer";
+        actionLink.textContent = link.label;
+        actionLinks.appendChild(actionLink);
+      });
+
+      if (hasWebsiteCta && showcaseImagePanel && showcaseImageFrame) {
+        showcaseImageFrame.insertAdjacentElement("afterend", actionLinks);
+      } else if (shouldPlaceActionsAboveMedia) {
+        showcaseImagePanel.insertBefore(actionLinks, showcaseImageFrame);
+      } else {
+        showcaseDescription.insertAdjacentElement("afterend", actionLinks);
+      }
+    }
+
+    if (showcaseImagePanel && showcaseCarouselControls && showcaseHighlights) {
+      showcaseCarouselControls.insertAdjacentElement("afterend", showcaseHighlights);
     }
   }
 
@@ -495,24 +539,41 @@ function createShowcasePage(showcaseData) {
       }
 
       card.appendChild(createShowcaseMedia(entry));
-      card.appendChild(createTextElement("h3", "", entry.title));
-      card.appendChild(createTextElement("p", "", entry.meta));
-      card.appendChild(createTextElement("p", "", entry.description));
+
+      let actionLinks = null;
+      let hasWebsiteCta = false;
 
       if (entry.links && entry.links.length > 0) {
-        const actionLinks = document.createElement("div");
+        actionLinks = document.createElement("div");
         actionLinks.className = "showcase-action-links";
+        hasWebsiteCta = entry.links.some((link) => link.isWebsiteCta);
+        if (hasWebsiteCta) {
+          actionLinks.classList.add("showcase-action-links--website");
+        }
 
         entry.links.forEach((link) => {
           const actionLink = document.createElement("a");
           actionLink.className = "showcase-action-link";
+          if (link.isWebsiteCta) {
+            actionLink.classList.add("showcase-action-link--text");
+          }
           actionLink.href = link.url;
           actionLink.target = "_blank";
           actionLink.rel = "noopener noreferrer";
           actionLink.textContent = link.label;
           actionLinks.appendChild(actionLink);
         });
+      }
 
+      if (actionLinks && hasWebsiteCta) {
+        card.appendChild(actionLinks);
+      }
+
+      card.appendChild(createTextElement("h3", "", entry.title));
+      card.appendChild(createTextElement("p", "", entry.meta));
+      card.appendChild(createTextElement("p", "", entry.description));
+
+      if (actionLinks && !hasWebsiteCta) {
         card.appendChild(actionLinks);
       }
 

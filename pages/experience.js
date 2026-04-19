@@ -59,6 +59,40 @@ const experienceData = [
       alt: "Preview card for the CKA Design website",
     },
   },
+  {
+    title: "Website & NFC Contact Design Support @ CKA Design Pte Ltd",
+    label: "Work Experience",
+    role: "Web Design, Name Card & Contact Website Support",
+    duration: "Apr 2026",
+    description:
+      "Although this internship lasted only two weeks because of personal constraints, the shorter timeline pushed me to work with more focus and initiative. During this period, I drafted and presented a refreshed website concept for the company, helped edit and create staff name card materials, built personalised contact websites for NFC card use, and generated QR codes with support from Adobe tools. In my final few days, I continued contributing to the Kong Meng San Phor Kark See Monastery columbarium project by refining details and improving the visual preparation work. This experience strengthened my ability to adapt quickly, manage design tasks under time pressure, and produce useful digital materials for a real workplace setting.",
+    highlights: [
+      "Drafted and presented a refreshed website concept for company review.",
+      "Created name card materials and personalised contact websites for NFC use.",
+      "Generated QR codes and supported design preparation using Adobe tools.",
+      "Continued refining columbarium visual details during the final stage of the internship.",
+    ],
+    hideMediaControls: true,
+    media: [
+      {
+        type: "image",
+        src: "../assets/images/project/ckadraftWEB.png",
+        alt: "CKA draft website preview",
+        url: "https://wensan19.github.io/cka-website/",
+        cta: "Click to Open Website",
+      },
+    ],
+    websitePreviews: [
+      {
+        title: "NFC Contact Website",
+        description: "Open the sample personal contact website created for NFC card use.",
+        url: "https://cka-design.github.io/cheryl-contact-card/",
+        image: "../assets/images/project/nameCard.jpeg",
+        alt: "Name card and NFC contact website preview",
+        cta: "Click to Open Contact Site",
+      },
+    ],
+  },
   // {
   //   title: "Learning Through Workplace Exposure",
   //   label: "Professional Growth",
@@ -85,6 +119,18 @@ const experienceData = [
   // },
 ];
 
+const experienceDateOrder = {
+  "Apr 2026": 0,
+  "(Sep 2025 - Oct 2025)": 1,
+  "(Mar 2025 - Apr 2025)": 2,
+};
+
+experienceData.sort(
+  (firstEntry, secondEntry) =>
+    (experienceDateOrder[firstEntry.duration] ?? 99) -
+    (experienceDateOrder[secondEntry.duration] ?? 99),
+);
+
 const experienceLabel = document.getElementById("experience-label");
 const experienceTitle = document.getElementById("experience-title");
 const experienceRole = document.getElementById("experience-role");
@@ -97,6 +143,9 @@ const experienceSlideCounter = document.getElementById(
 const experienceMediaFrame = document.getElementById("experience-media-frame");
 const experienceMediaCounter = document.getElementById(
   "experience-media-counter",
+);
+const experienceMediaControls = document.querySelector(
+  ".experience-media-controls",
 );
 const experienceWebsitePreview = document.getElementById(
   "experience-website-preview",
@@ -163,6 +212,23 @@ function createMediaElement(mediaItem) {
   const image = document.createElement("img");
   image.src = mediaItem.src;
   image.alt = mediaItem.alt;
+
+  if (mediaItem.url) {
+    const link = document.createElement("a");
+    link.className = "experience-media-link";
+    link.href = mediaItem.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+
+    const note = document.createElement("p");
+    note.className = "experience-website-note";
+    note.textContent = mediaItem.cta || "Click to Open Website";
+
+    link.appendChild(image);
+    link.appendChild(note);
+    return link;
+  }
+
   image.className = "experience-zoomable-image";
   image.tabIndex = 0;
   image.setAttribute("role", "button");
@@ -181,32 +247,40 @@ function createMediaElement(mediaItem) {
 
 function renderMedia(entry, mediaIndex) {
   const mediaItem = entry.media[mediaIndex];
+  const shouldHideMediaControls = Boolean(entry.hideMediaControls);
+
   experienceMediaFrame.innerHTML = "";
   experienceMediaFrame.appendChild(createMediaElement(mediaItem));
 
   experienceMediaCounter.textContent = `${mediaIndex + 1} / ${entry.media.length} media`;
-  previousMediaButton.disabled = entry.media.length <= 1;
-  nextMediaButton.disabled = entry.media.length <= 1;
+  previousMediaButton.disabled = shouldHideMediaControls || entry.media.length <= 1;
+  nextMediaButton.disabled = shouldHideMediaControls || entry.media.length <= 1;
+
+  if (experienceMediaControls) {
+    experienceMediaControls.classList.toggle("is-hidden", shouldHideMediaControls);
+  }
 }
 
 function renderWebsitePreview(entry) {
-  const preview = entry.websitePreview;
+  const previews = entry.websitePreviews || (entry.websitePreview ? [entry.websitePreview] : []);
 
-  if (!preview) {
+  if (previews.length === 0) {
     experienceWebsitePreview.classList.add("is-hidden");
     experienceWebsitePreview.innerHTML = "";
     return;
   }
 
   experienceWebsitePreview.classList.remove("is-hidden");
-  experienceWebsitePreview.innerHTML = `
+  experienceWebsitePreview.innerHTML = previews
+    .map((preview) => `
     <a class="experience-website-card" href="${preview.url}" target="_blank" rel="noopener noreferrer">
       <div class="experience-website-image-frame">
         <img src="${preview.image}" alt="${preview.alt}">
       </div>
-      <p class="experience-website-note">Click on this to open website in a new tab</p>
+      <p class="experience-website-note">${preview.cta || "Click on this to open website in a new tab"}</p>
     </a>
-  `;
+  `)
+    .join("");
 }
 
 function openZoomedImage(src, alt) {
@@ -270,6 +344,12 @@ function renderGallery() {
         <video controls preload="metadata" playsinline aria-label="${firstMedia.alt}">
           <source src="${firstMedia.src}">
         </video>
+      `;
+    } else if (firstMedia.url) {
+      mediaMarkup = `
+        <a class="experience-media-link" href="${firstMedia.url}" target="_blank" rel="noopener noreferrer">
+          <img src="${firstMedia.src}" alt="${firstMedia.alt}">
+        </a>
       `;
     } else {
       mediaMarkup = `<img src="${firstMedia.src}" alt="${firstMedia.alt}">`;

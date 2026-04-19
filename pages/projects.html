@@ -13,10 +13,20 @@
         <span class="theme-toggle-sun" aria-hidden="true">☀</span>
         <span class="theme-toggle-moon" aria-hidden="true">☾</span>
     </button>
+    <div class="project-jump-menu" id="project-jump-menu">
+        <button class="project-jump-toggle" id="project-jump-toggle" type="button" aria-expanded="false"
+            aria-controls="project-jump-panel" aria-label="Open project navigation menu">
+            <span class="project-jump-icon" aria-hidden="true"></span>
+        </button>
+        <div class="project-jump-panel is-hidden" id="project-jump-panel">
+            <p class="project-jump-label">Jump to project</p>
+            <div class="project-jump-list" id="project-jump-list"></div>
+        </div>
+    </div>
     <div class="background-cloud background-cloud-one" aria-hidden="true"></div>
     <div class="background-cloud background-cloud-two" aria-hidden="true"></div>
 
-    <main class="section-page-main">
+    <main class="section-page-main projects-page-main">
         <article class="section-page-card showcase-page showcase-page--projects fade-up show">
             <div class="showcase-page-header">
                 <div class="showcase-header-copy">
@@ -28,6 +38,24 @@
                     </p>
                 </div>
 
+            </div>
+
+            <div class="project-controls" aria-label="Project display controls">
+                <div class="project-filter-row" role="group" aria-label="Filter projects by category">
+                    <button class="project-filter-button is-active" type="button" data-project-filter="academic"
+                        aria-pressed="true">
+                        Academic Projects
+                    </button>
+                    <button class="project-filter-button" type="button" data-project-filter="independent"
+                        aria-pressed="false">
+                        Independent Projects
+                    </button>
+                    <button class="project-filter-button" type="button" data-project-filter="professional"
+                        aria-pressed="false">
+                        Professional Work
+                    </button>
+                </div>
+
                 <div class="showcase-view-toggle">
                     <button class="showcase-toggle-button" id="view-all-button" type="button">View All</button>
                     <button class="showcase-toggle-button is-hidden" id="view-carousel-button" type="button">
@@ -36,8 +64,17 @@
                 </div>
             </div>
 
+            <p class="project-empty-state is-hidden" id="project-empty-state">
+                Projects for this category will be added soon.
+            </p>
+
             <section class="showcase-carousel-shell" id="showcase-carousel-shell" aria-label="Projects slideshow">
                 <div class="showcase-carousel-card">
+                    <h2 class="showcase-title project-mobile-title" id="project-mobile-title">Portfolio Website
+                        Prototype</h2>
+                    <p class="showcase-meta project-mobile-meta" id="project-mobile-meta">Web Design &amp; Front-End
+                        Development</p>
+
                     <div class="showcase-image-panel">
                         <div class="showcase-image-frame">
                             <img id="showcase-main-image" src="../assets/images/project-preview.svg"
