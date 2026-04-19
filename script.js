@@ -97,8 +97,7 @@ const confettiLayer = document.getElementById("confetti-layer");
 const resetProgressButton = document.getElementById("reset-progress-button");
 const modeButtons = document.querySelectorAll("[data-mode]");
 const fadeItems = document.querySelectorAll(".fade-up");
-const modelLoadingOverlay = document.getElementById("model-loading-overlay");
-const modelLoadingTimeoutMs = 12000;
+const modelItemLoadingTimeoutMs = 12000;
 
 const state = {
   checkedItems: new Set(loadCheckedItems()),
@@ -132,60 +131,10 @@ function initializePrototype() {
   renderAll();
   attachEventListeners();
   setupFadeInAnimation();
-  waitForInteractiveModels().then(revealInteractivePage);
 
   if (state.checkedItems.size === portfolioSections.length && celebrationOverlay) {
     openCelebrationOverlay();
   }
-}
-
-function revealInteractivePage() {
-  document.body.classList.remove("interactive-models-loading");
-  document.body.classList.add("interactive-models-ready");
-
-  if (modelLoadingOverlay) {
-    modelLoadingOverlay.setAttribute("aria-hidden", "true");
-  }
-}
-
-function waitForInteractiveModels() {
-  const modelViewers = Array.from(
-    document.querySelectorAll("#interactive-mode model-viewer"),
-  );
-
-  if (modelViewers.length === 0) {
-    return Promise.resolve();
-  }
-
-  const modelPromises = modelViewers.map((modelViewer) => {
-    if (modelViewer.loaded) {
-      return Promise.resolve();
-    }
-
-    return new Promise((resolve) => {
-      let settled = false;
-
-      function finish() {
-        if (settled) {
-          return;
-        }
-
-        settled = true;
-        modelViewer.removeEventListener("load", finish);
-        modelViewer.removeEventListener("error", finish);
-        resolve();
-      }
-
-      modelViewer.addEventListener("load", finish, { once: true });
-      modelViewer.addEventListener("error", finish, { once: true });
-    });
-  });
-
-  const timeoutPromise = new Promise((resolve) => {
-    window.setTimeout(resolve, modelLoadingTimeoutMs);
-  });
-
-  return Promise.race([Promise.all(modelPromises), timeoutPromise]);
 }
 
 function initializeTheme() {
@@ -372,6 +321,10 @@ function createModelItem(section) {
 
   itemCard.innerHTML = `
         <div class="model-object-wrap">
+            <div class="model-object-loader" aria-live="polite">
+                <div class="model-object-spinner" aria-hidden="true"></div>
+                <span>3D models in progress</span>
+            </div>
             <model-viewer
                 class="portfolio-model-viewer"
                 src="${section.modelPath}"
@@ -383,6 +336,28 @@ function createModelItem(section) {
         </div>
         <h3 class="model-object-title">${section.title}</h3>
     `;
+
+  const modelViewer = itemCard.querySelector("model-viewer");
+  const modelLoader = itemCard.querySelector(".model-object-loader");
+
+  function hideModelLoader() {
+    itemCard.classList.add("model-object-item--loaded");
+    if (modelLoader) {
+      modelLoader.setAttribute("aria-hidden", "true");
+    }
+  }
+
+  if (modelViewer) {
+    if (modelViewer.loaded) {
+      hideModelLoader();
+    } else {
+      modelViewer.addEventListener("load", hideModelLoader, { once: true });
+      modelViewer.addEventListener("error", hideModelLoader, { once: true });
+      window.setTimeout(hideModelLoader, modelItemLoadingTimeoutMs);
+    }
+  } else {
+    hideModelLoader();
+  }
 
   itemCard.addEventListener("dragstart", (event) => {
     event.dataTransfer.setData("text/plain", section.id);
