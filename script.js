@@ -97,6 +97,8 @@ const confettiLayer = document.getElementById("confetti-layer");
 const resetProgressButton = document.getElementById("reset-progress-button");
 const modeButtons = document.querySelectorAll("[data-mode]");
 const fadeItems = document.querySelectorAll(".fade-up");
+const modelLoadingOverlay = document.getElementById("model-loading-overlay");
+const modelLoadingTimeoutMs = 12000;
 
 const state = {
   checkedItems: new Set(loadCheckedItems()),
@@ -130,10 +132,60 @@ function initializePrototype() {
   renderAll();
   attachEventListeners();
   setupFadeInAnimation();
+  waitForInteractiveModels().then(revealInteractivePage);
 
   if (state.checkedItems.size === portfolioSections.length && celebrationOverlay) {
     openCelebrationOverlay();
   }
+}
+
+function revealInteractivePage() {
+  document.body.classList.remove("interactive-models-loading");
+  document.body.classList.add("interactive-models-ready");
+
+  if (modelLoadingOverlay) {
+    modelLoadingOverlay.setAttribute("aria-hidden", "true");
+  }
+}
+
+function waitForInteractiveModels() {
+  const modelViewers = Array.from(
+    document.querySelectorAll("#interactive-mode model-viewer"),
+  );
+
+  if (modelViewers.length === 0) {
+    return Promise.resolve();
+  }
+
+  const modelPromises = modelViewers.map((modelViewer) => {
+    if (modelViewer.loaded) {
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      let settled = false;
+
+      function finish() {
+        if (settled) {
+          return;
+        }
+
+        settled = true;
+        modelViewer.removeEventListener("load", finish);
+        modelViewer.removeEventListener("error", finish);
+        resolve();
+      }
+
+      modelViewer.addEventListener("load", finish, { once: true });
+      modelViewer.addEventListener("error", finish, { once: true });
+    });
+  });
+
+  const timeoutPromise = new Promise((resolve) => {
+    window.setTimeout(resolve, modelLoadingTimeoutMs);
+  });
+
+  return Promise.race([Promise.all(modelPromises), timeoutPromise]);
 }
 
 function initializeTheme() {

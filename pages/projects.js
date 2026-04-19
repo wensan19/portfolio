@@ -94,8 +94,7 @@ const allProjectsData = [
     category: "independent",
     meta: "AI-Assisted Wellness Tracking Web App",
     image: "../assets/images/project/thryve.png",
-    videoUrl: "../assets/images/project/thryve video.mp4",
-    galleryMedia: "image",
+    embedUrl: "https://www.youtube.com/embed/-m7Xa6_BaBE",
     alt: "Thryve wellness tracking app preview",
     websiteUrl: "https://thryve-kohl.vercel.app/",
     description:
@@ -460,7 +459,7 @@ function renderWebsiteProjectAction(project, showcaseImageFrame) {
     `Open ${project.title} website in a new tab`,
   );
   showcaseImageFrame.onclick = (event) => {
-    if (event.target.closest("a, button, video")) {
+    if (event.target.closest("a, button, video, iframe")) {
       return;
     }
 
